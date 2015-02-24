@@ -1,0 +1,444 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C10CCBAF1A9D29610031F29E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C10CCBAE1A9D29610031F29E /* main.m */; };
+		C10CCBB21A9D29610031F29E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C10CCBB11A9D29610031F29E /* AppDelegate.m */; };
+		C10CCBB51A9D29610031F29E /* SleepPainter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C10CCBB31A9D29610031F29E /* SleepPainter.xcdatamodeld */; };
+		C10CCBB81A9D29610031F29E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C10CCBB71A9D29610031F29E /* ViewController.m */; };
+		C10CCBBB1A9D29610031F29E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C10CCBB91A9D29610031F29E /* Main.storyboard */; };
+		C10CCBBD1A9D29610031F29E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C10CCBBC1A9D29610031F29E /* Images.xcassets */; };
+		C10CCBC01A9D29610031F29E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C10CCBBE1A9D29610031F29E /* LaunchScreen.xib */; };
+		C10CCBCC1A9D29610031F29E /* SleepPainterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C10CCBCB1A9D29610031F29E /* SleepPainterTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C10CCBC61A9D29610031F29E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C10CCBA11A9D29610031F29E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C10CCBA81A9D29610031F29E;
+			remoteInfo = SleepPainter;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C10CCBA91A9D29610031F29E /* SleepPainter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SleepPainter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C10CCBAD1A9D29610031F29E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C10CCBAE1A9D29610031F29E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C10CCBB01A9D29610031F29E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C10CCBB11A9D29610031F29E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C10CCBB41A9D29610031F29E /* SleepPainter.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SleepPainter.xcdatamodel; sourceTree = "<group>"; };
+		C10CCBB61A9D29610031F29E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C10CCBB71A9D29610031F29E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C10CCBBA1A9D29610031F29E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C10CCBBC1A9D29610031F29E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C10CCBBF1A9D29610031F29E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		C10CCBC51A9D29610031F29E /* SleepPainterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SleepPainterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C10CCBCA1A9D29610031F29E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C10CCBCB1A9D29610031F29E /* SleepPainterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SleepPainterTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C10CCBA61A9D29610031F29E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C10CCBC21A9D29610031F29E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C10CCBA01A9D29610031F29E = {
+			isa = PBXGroup;
+			children = (
+				C10CCBAB1A9D29610031F29E /* SleepPainter */,
+				C10CCBC81A9D29610031F29E /* SleepPainterTests */,
+				C10CCBAA1A9D29610031F29E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C10CCBAA1A9D29610031F29E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C10CCBA91A9D29610031F29E /* SleepPainter.app */,
+				C10CCBC51A9D29610031F29E /* SleepPainterTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C10CCBAB1A9D29610031F29E /* SleepPainter */ = {
+			isa = PBXGroup;
+			children = (
+				C10CCBB01A9D29610031F29E /* AppDelegate.h */,
+				C10CCBB11A9D29610031F29E /* AppDelegate.m */,
+				C10CCBB61A9D29610031F29E /* ViewController.h */,
+				C10CCBB71A9D29610031F29E /* ViewController.m */,
+				C10CCBB91A9D29610031F29E /* Main.storyboard */,
+				C10CCBBC1A9D29610031F29E /* Images.xcassets */,
+				C10CCBBE1A9D29610031F29E /* LaunchScreen.xib */,
+				C10CCBB31A9D29610031F29E /* SleepPainter.xcdatamodeld */,
+				C10CCBAC1A9D29610031F29E /* Supporting Files */,
+			);
+			path = SleepPainter;
+			sourceTree = "<group>";
+		};
+		C10CCBAC1A9D29610031F29E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C10CCBAD1A9D29610031F29E /* Info.plist */,
+				C10CCBAE1A9D29610031F29E /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C10CCBC81A9D29610031F29E /* SleepPainterTests */ = {
+			isa = PBXGroup;
+			children = (
+				C10CCBCB1A9D29610031F29E /* SleepPainterTests.m */,
+				C10CCBC91A9D29610031F29E /* Supporting Files */,
+			);
+			path = SleepPainterTests;
+			sourceTree = "<group>";
+		};
+		C10CCBC91A9D29610031F29E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C10CCBCA1A9D29610031F29E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C10CCBA81A9D29610031F29E /* SleepPainter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C10CCBCF1A9D29610031F29E /* Build configuration list for PBXNativeTarget "SleepPainter" */;
+			buildPhases = (
+				C10CCBA51A9D29610031F29E /* Sources */,
+				C10CCBA61A9D29610031F29E /* Frameworks */,
+				C10CCBA71A9D29610031F29E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SleepPainter;
+			productName = SleepPainter;
+			productReference = C10CCBA91A9D29610031F29E /* SleepPainter.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C10CCBC41A9D29610031F29E /* SleepPainterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C10CCBD21A9D29610031F29E /* Build configuration list for PBXNativeTarget "SleepPainterTests" */;
+			buildPhases = (
+				C10CCBC11A9D29610031F29E /* Sources */,
+				C10CCBC21A9D29610031F29E /* Frameworks */,
+				C10CCBC31A9D29610031F29E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C10CCBC71A9D29610031F29E /* PBXTargetDependency */,
+			);
+			name = SleepPainterTests;
+			productName = SleepPainterTests;
+			productReference = C10CCBC51A9D29610031F29E /* SleepPainterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C10CCBA11A9D29610031F29E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Shanshan ZHAO";
+				TargetAttributes = {
+					C10CCBA81A9D29610031F29E = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					C10CCBC41A9D29610031F29E = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = C10CCBA81A9D29610031F29E;
+					};
+				};
+			};
+			buildConfigurationList = C10CCBA41A9D29610031F29E /* Build configuration list for PBXProject "SleepPainter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C10CCBA01A9D29610031F29E;
+			productRefGroup = C10CCBAA1A9D29610031F29E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C10CCBA81A9D29610031F29E /* SleepPainter */,
+				C10CCBC41A9D29610031F29E /* SleepPainterTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C10CCBA71A9D29610031F29E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C10CCBBB1A9D29610031F29E /* Main.storyboard in Resources */,
+				C10CCBC01A9D29610031F29E /* LaunchScreen.xib in Resources */,
+				C10CCBBD1A9D29610031F29E /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C10CCBC31A9D29610031F29E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C10CCBA51A9D29610031F29E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C10CCBB21A9D29610031F29E /* AppDelegate.m in Sources */,
+				C10CCBAF1A9D29610031F29E /* main.m in Sources */,
+				C10CCBB81A9D29610031F29E /* ViewController.m in Sources */,
+				C10CCBB51A9D29610031F29E /* SleepPainter.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C10CCBC11A9D29610031F29E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C10CCBCC1A9D29610031F29E /* SleepPainterTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C10CCBC71A9D29610031F29E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C10CCBA81A9D29610031F29E /* SleepPainter */;
+			targetProxy = C10CCBC61A9D29610031F29E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C10CCBB91A9D29610031F29E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C10CCBBA1A9D29610031F29E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C10CCBBE1A9D29610031F29E /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C10CCBBF1A9D29610031F29E /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C10CCBCD1A9D29610031F29E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C10CCBCE1A9D29610031F29E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C10CCBD01A9D29610031F29E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SleepPainter/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C10CCBD11A9D29610031F29E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SleepPainter/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C10CCBD31A9D29610031F29E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SleepPainterTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SleepPainter.app/SleepPainter";
+			};
+			name = Debug;
+		};
+		C10CCBD41A9D29610031F29E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SleepPainterTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SleepPainter.app/SleepPainter";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C10CCBA41A9D29610031F29E /* Build configuration list for PBXProject "SleepPainter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C10CCBCD1A9D29610031F29E /* Debug */,
+				C10CCBCE1A9D29610031F29E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C10CCBCF1A9D29610031F29E /* Build configuration list for PBXNativeTarget "SleepPainter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C10CCBD01A9D29610031F29E /* Debug */,
+				C10CCBD11A9D29610031F29E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C10CCBD21A9D29610031F29E /* Build configuration list for PBXNativeTarget "SleepPainterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C10CCBD31A9D29610031F29E /* Debug */,
+				C10CCBD41A9D29610031F29E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C10CCBB31A9D29610031F29E /* SleepPainter.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C10CCBB41A9D29610031F29E /* SleepPainter.xcdatamodel */,
+			);
+			currentVersion = C10CCBB41A9D29610031F29E /* SleepPainter.xcdatamodel */;
+			path = SleepPainter.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = C10CCBA11A9D29610031F29E /* Project object */;
+}
