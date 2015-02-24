@@ -25,16 +25,78 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pn2-NL-gi8">
+                                <rect key="frame" x="0.0" y="472" width="600" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCc-PW-MRD">
+                                        <rect key="frame" x="540" y="0.0" width="30" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="luM-0L-fWu"/>
+                                            <constraint firstAttribute="height" constant="100" id="qjf-qq-PQt"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="35"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbi-cl-co9">
+                                        <rect key="frame" x="30" y="0.0" width="30" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="mNu-ba-XCJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="35"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="9lm-rR-S8L">
+                                        <rect key="frame" x="250" y="0.0" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="BMK-mZ-O3E"/>
+                                            <constraint firstAttribute="height" constant="100" id="YwJ-hT-4hd"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="20"/>
+                                        <state key="normal">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="9lm-rR-S8L" secondAttribute="bottom" id="Edg-FT-yZk"/>
+                                    <constraint firstAttribute="centerX" secondItem="9lm-rR-S8L" secondAttribute="centerX" id="HFl-rd-KI1"/>
+                                    <constraint firstAttribute="centerY" secondItem="9lm-rR-S8L" secondAttribute="centerY" id="RoH-0y-wVq"/>
+                                    <constraint firstItem="XCc-PW-MRD" firstAttribute="top" secondItem="pn2-NL-gi8" secondAttribute="top" id="UxV-qY-KKq"/>
+                                    <constraint firstAttribute="bottom" secondItem="wbi-cl-co9" secondAttribute="bottom" id="aNd-VY-1PE"/>
+                                    <constraint firstAttribute="trailing" secondItem="XCc-PW-MRD" secondAttribute="trailing" constant="30" id="acg-oE-GaK"/>
+                                    <constraint firstAttribute="bottom" secondItem="XCc-PW-MRD" secondAttribute="bottom" id="fUc-fW-pTg"/>
+                                    <constraint firstItem="wbi-cl-co9" firstAttribute="leading" secondItem="pn2-NL-gi8" secondAttribute="leading" constant="30" id="fxw-0v-FqJ"/>
+                                    <constraint firstItem="wbi-cl-co9" firstAttribute="top" secondItem="pn2-NL-gi8" secondAttribute="top" id="kkW-0t-E53"/>
+                                    <constraint firstItem="9lm-rR-S8L" firstAttribute="top" secondItem="pn2-NL-gi8" secondAttribute="top" id="rfo-c7-Yfa"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="pn2-NL-gi8" secondAttribute="bottom" constant="28" id="9LY-Ig-xwi"/>
                             <constraint firstAttribute="trailing" secondItem="fhh-uj-mdA" secondAttribute="trailing" id="CLw-0K-xHh"/>
                             <constraint firstItem="fhh-uj-mdA" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="PJy-W3-u9n"/>
+                            <constraint firstItem="pn2-NL-gi8" firstAttribute="trailing" secondItem="fhh-uj-mdA" secondAttribute="trailing" id="T3f-M3-ftF"/>
+                            <constraint firstItem="pn2-NL-gi8" firstAttribute="trailing" secondItem="fhh-uj-mdA" secondAttribute="trailing" id="e0Y-BF-GO4"/>
                             <constraint firstItem="fhh-uj-mdA" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="53" id="hym-Zc-kIZ"/>
+                            <constraint firstItem="pn2-NL-gi8" firstAttribute="leading" secondItem="fhh-uj-mdA" secondAttribute="leading" id="wzw-kB-GcM"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="e0Y-BF-GO4"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="clockLabel" destination="fhh-uj-mdA" id="lke-QY-RMl"/>
+                        <outlet property="homeBottomView" destination="pn2-NL-gi8" id="3zf-gR-SCl"/>
+                        <outlet property="homeLeftArrowLabel" destination="wbi-cl-co9" id="EIi-nE-3rd"/>
+                        <outlet property="homeRightArrowLabel" destination="XCc-PW-MRD" id="b7w-yj-h2H"/>
+                        <outlet property="homeSetAlarmButton" destination="9lm-rR-S8L" id="xLc-kv-r8l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

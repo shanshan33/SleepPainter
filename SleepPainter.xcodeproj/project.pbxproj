@@ -85,8 +85,7 @@
 			children = (
 				C10CCBB01A9D29610031F29E /* AppDelegate.h */,
 				C10CCBB11A9D29610031F29E /* AppDelegate.m */,
-				C10CCBB61A9D29610031F29E /* ViewController.h */,
-				C10CCBB71A9D29610031F29E /* ViewController.m */,
+				C158F99C1A9D3C78001B6DF3 /* HomePage */,
 				C10CCBB91A9D29610031F29E /* Main.storyboard */,
 				C10CCBBC1A9D29610031F29E /* Images.xcassets */,
 				C10CCBBE1A9D29610031F29E /* LaunchScreen.xib */,
@@ -120,6 +119,15 @@
 				C10CCBCA1A9D29610031F29E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C158F99C1A9D3C78001B6DF3 /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				C10CCBB61A9D29610031F29E /* ViewController.h */,
+				C10CCBB71A9D29610031F29E /* ViewController.m */,
+			);
+			name = HomePage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -416,6 +424,7 @@
 				C10CCBD11A9D29610031F29E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C10CCBD21A9D29610031F29E /* Build configuration list for PBXNativeTarget "SleepPainterTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +433,7 @@
 				C10CCBD41A9D29610031F29E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

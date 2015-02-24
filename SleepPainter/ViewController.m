@@ -26,6 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     dummyToggle = 0;
     [self updateClock];
 }
