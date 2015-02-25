@@ -16,6 +16,10 @@
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *clockLabel;
+@property (weak, nonatomic) IBOutlet UILabel *homeRightArrowLabel;
+@property (weak, nonatomic) IBOutlet UILabel *homeLeftArrowLabel;
+@property (weak, nonatomic) IBOutlet UIButton *homeSetAlarmButton;
+@property (weak, nonatomic) IBOutlet UIView *homeBottomView;
 
 @end
 
@@ -26,9 +30,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     dummyToggle = 0;
     [self updateClock];
+    self.homeBottomView.alpha = 0.5;
+   [self configOwlButton];
+
 }
 
 
@@ -74,7 +80,11 @@
             break;
     }
     dummyToggle = 1 - dummyToggle;
-    
+}
+
+-(void)configOwlButton
+{
+    [self.homeSetAlarmButton setTitle:@"   ,___,\n  (︶,︶)..zZ\n   /)__ )\n     \"  \"" forState:UIControlStateNormal];
 }
 
 @end
