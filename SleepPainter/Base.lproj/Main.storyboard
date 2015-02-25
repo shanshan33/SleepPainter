@@ -34,7 +34,7 @@
                                             <constraint firstAttribute="width" constant="30" id="luM-0L-fWu"/>
                                             <constraint firstAttribute="height" constant="100" id="qjf-qq-PQt"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="35"/>
+                                        <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="34"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -58,6 +58,9 @@
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="pCA-FJ-2gf" kind="show" identifier="goToAlarmPage" id="yyF-xs-WD0"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -101,6 +104,78 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Alarm View Controller-->
+        <scene sceneID="Mdx-aK-iPg">
+            <objects>
+                <viewController id="pCA-FJ-2gf" customClass="AlarmViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QC6-ch-Ewt"/>
+                        <viewControllerLayoutGuide type="bottom" id="XRc-7n-kIK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="inl-tb-eMD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CLOCK" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ix-sq-3Mz">
+                                <rect key="frame" x="0.0" y="73" width="600" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="IgK-Fx-wUs"/>
+                                    <constraint firstAttribute="height" constant="100" id="TQz-UI-S73"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="50"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R2l-U1-GIw">
+                                <rect key="frame" x="0.0" y="172" width="600" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ZE0-dR-3iH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="15"/>
+                                <state key="normal" title="Set Alarm">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALARM INFO" textAlignment="center" lineBreakMode="middleTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ovd-jV-1TS">
+                                <rect key="frame" x="0.0" y="221" width="600" height="120"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" staticText="YES" notEnabled="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="vnT-tn-WE6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="R2l-U1-GIw" firstAttribute="top" secondItem="1ix-sq-3Mz" secondAttribute="bottom" constant="-1" id="2U4-nm-HLA"/>
+                            <constraint firstItem="1ix-sq-3Mz" firstAttribute="leading" secondItem="inl-tb-eMD" secondAttribute="leading" id="PgL-wp-KDO"/>
+                            <constraint firstItem="1ix-sq-3Mz" firstAttribute="top" secondItem="QC6-ch-Ewt" secondAttribute="bottom" constant="53" id="VaB-u6-8pv"/>
+                            <constraint firstItem="R2l-U1-GIw" firstAttribute="trailing" secondItem="1ix-sq-3Mz" secondAttribute="trailing" id="WeP-io-gtS"/>
+                            <constraint firstItem="R2l-U1-GIw" firstAttribute="leading" secondItem="inl-tb-eMD" secondAttribute="leading" id="WlX-EZ-Wmr"/>
+                            <constraint firstItem="R2l-U1-GIw" firstAttribute="leading" secondItem="1ix-sq-3Mz" secondAttribute="leading" id="aeS-iN-tvA"/>
+                            <constraint firstAttribute="trailing" secondItem="R2l-U1-GIw" secondAttribute="trailing" id="bDp-il-O35"/>
+                            <constraint firstItem="Ovd-jV-1TS" firstAttribute="top" secondItem="R2l-U1-GIw" secondAttribute="bottom" constant="-1" id="dUB-ii-g42"/>
+                            <constraint firstItem="R2l-U1-GIw" firstAttribute="top" secondItem="QC6-ch-Ewt" secondAttribute="bottom" constant="152" id="fvY-My-2nD"/>
+                            <constraint firstAttribute="trailing" secondItem="Ovd-jV-1TS" secondAttribute="trailing" id="knK-oM-pP7"/>
+                            <constraint firstAttribute="trailing" secondItem="1ix-sq-3Mz" secondAttribute="trailing" id="w8i-ml-sbR"/>
+                            <constraint firstItem="Ovd-jV-1TS" firstAttribute="leading" secondItem="inl-tb-eMD" secondAttribute="leading" id="xIb-DQ-4Vn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="AlarmInfoLabel" destination="Ovd-jV-1TS" id="tlJ-Ci-hxP"/>
+                        <outlet property="clockLabel" destination="1ix-sq-3Mz" id="829-Hk-vJ5"/>
+                        <outlet property="setAlarmButton" destination="R2l-U1-GIw" id="Egz-GK-Pbg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mMt-ms-zYy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="968" y="265"/>
         </scene>
     </scenes>
 </document>

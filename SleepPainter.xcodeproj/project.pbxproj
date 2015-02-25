@@ -15,6 +15,8 @@
 		C10CCBBD1A9D29610031F29E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C10CCBBC1A9D29610031F29E /* Images.xcassets */; };
 		C10CCBC01A9D29610031F29E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C10CCBBE1A9D29610031F29E /* LaunchScreen.xib */; };
 		C10CCBCC1A9D29610031F29E /* SleepPainterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C10CCBCB1A9D29610031F29E /* SleepPainterTests.m */; };
+		C158F9A01A9E6D2F001B6DF3 /* AlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C158F99F1A9E6D2F001B6DF3 /* AlarmViewController.m */; };
+		C158F9A31A9E71F3001B6DF3 /* SleepPainterAlarmSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = C158F9A21A9E71F3001B6DF3 /* SleepPainterAlarmSlider.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,10 @@
 		C10CCBC51A9D29610031F29E /* SleepPainterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SleepPainterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C10CCBCA1A9D29610031F29E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C10CCBCB1A9D29610031F29E /* SleepPainterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SleepPainterTests.m; sourceTree = "<group>"; };
+		C158F99E1A9E6D2F001B6DF3 /* AlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlarmViewController.h; path = AlarmPage/AlarmViewController.h; sourceTree = "<group>"; };
+		C158F99F1A9E6D2F001B6DF3 /* AlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlarmViewController.m; path = AlarmPage/AlarmViewController.m; sourceTree = "<group>"; };
+		C158F9A11A9E71F3001B6DF3 /* SleepPainterAlarmSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SleepPainterAlarmSlider.h; path = AlarmPage/SleepPainterAlarmSlider.h; sourceTree = "<group>"; };
+		C158F9A21A9E71F3001B6DF3 /* SleepPainterAlarmSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SleepPainterAlarmSlider.m; path = AlarmPage/SleepPainterAlarmSlider.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,8 +91,9 @@
 			children = (
 				C10CCBB01A9D29610031F29E /* AppDelegate.h */,
 				C10CCBB11A9D29610031F29E /* AppDelegate.m */,
-				C158F99C1A9D3C78001B6DF3 /* HomePage */,
 				C10CCBB91A9D29610031F29E /* Main.storyboard */,
+				C158F99C1A9D3C78001B6DF3 /* HomePage */,
+				C158F99D1A9E6CCE001B6DF3 /* AlarmPage */,
 				C10CCBBC1A9D29610031F29E /* Images.xcassets */,
 				C10CCBBE1A9D29610031F29E /* LaunchScreen.xib */,
 				C10CCBB31A9D29610031F29E /* SleepPainter.xcdatamodeld */,
@@ -128,6 +135,17 @@
 				C10CCBB71A9D29610031F29E /* ViewController.m */,
 			);
 			name = HomePage;
+			sourceTree = "<group>";
+		};
+		C158F99D1A9E6CCE001B6DF3 /* AlarmPage */ = {
+			isa = PBXGroup;
+			children = (
+				C158F99E1A9E6D2F001B6DF3 /* AlarmViewController.h */,
+				C158F99F1A9E6D2F001B6DF3 /* AlarmViewController.m */,
+				C158F9A11A9E71F3001B6DF3 /* SleepPainterAlarmSlider.h */,
+				C158F9A21A9E71F3001B6DF3 /* SleepPainterAlarmSlider.m */,
+			);
+			name = AlarmPage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,7 +248,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C158F9A31A9E71F3001B6DF3 /* SleepPainterAlarmSlider.m in Sources */,
 				C10CCBB21A9D29610031F29E /* AppDelegate.m in Sources */,
+				C158F9A01A9E6D2F001B6DF3 /* AlarmViewController.m in Sources */,
 				C10CCBAF1A9D29610031F29E /* main.m in Sources */,
 				C10CCBB81A9D29610031F29E /* ViewController.m in Sources */,
 				C10CCBB51A9D29610031F29E /* SleepPainter.xcdatamodeld in Sources */,
