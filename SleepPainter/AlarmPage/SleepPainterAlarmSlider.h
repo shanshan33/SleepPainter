@@ -10,8 +10,8 @@
 #import <UIKit/UIKit.h>
 
 #define ALARM_SLIDER_SIZE           190
-#define ALARM_SLIDER_PATH           2
-#define ALARM_SLIDER_HANDLE         22
+#define ALARM_SLIDER_PATH           3
+#define ALARM_SLIDER_HANDLE         18
 #define ALARM_SLIDER_PADDING        20
 #define ALARM_SLIDER_ANGLEOFFSET    180
 #define offset2(deg)                ( ((deg) + 360 - ALARM_SLIDER_ANGLEOFFSET) % 360 )
@@ -20,6 +20,7 @@
 @interface SleepPainterAlarmSlider : UIControl
 
 @property (nonatomic,assign) int angle;
+@property (nonatomic) CGFloat sliderSize;
 
 
 @end
