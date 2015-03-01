@@ -61,8 +61,6 @@
 
 - (void)updateBackgroundImage
 {
-    NSLog(@"Update background image");
-    
     // Add animation
     CATransition *animation = [CATransition animation];
     animation.duration = 1.0f;

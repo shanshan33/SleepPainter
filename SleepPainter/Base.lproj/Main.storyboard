@@ -25,80 +25,56 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pn2-NL-gi8">
-                                <rect key="frame" x="0.0" y="472" width="600" height="100"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCc-PW-MRD">
-                                        <rect key="frame" x="540" y="0.0" width="30" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="luM-0L-fWu"/>
-                                            <constraint firstAttribute="height" constant="100" id="qjf-qq-PQt"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="34"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbi-cl-co9">
-                                        <rect key="frame" x="30" y="0.0" width="30" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="mNu-ba-XCJ"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="EuphemiaUCAS" family="Euphemia UCAS" pointSize="35"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="9lm-rR-S8L">
-                                        <rect key="frame" x="250" y="0.0" width="100" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="BMK-mZ-O3E"/>
-                                            <constraint firstAttribute="height" constant="100" id="YwJ-hT-4hd"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="20"/>
-                                        <state key="normal">
-                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="pCA-FJ-2gf" kind="show" identifier="goToAlarmPage" id="yyF-xs-WD0"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="9lm-rR-S8L">
+                                <rect key="frame" x="225" y="250" width="150" height="150"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="9lm-rR-S8L" secondAttribute="bottom" id="Edg-FT-yZk"/>
-                                    <constraint firstAttribute="centerX" secondItem="9lm-rR-S8L" secondAttribute="centerX" id="HFl-rd-KI1"/>
-                                    <constraint firstAttribute="centerY" secondItem="9lm-rR-S8L" secondAttribute="centerY" id="RoH-0y-wVq"/>
-                                    <constraint firstItem="XCc-PW-MRD" firstAttribute="top" secondItem="pn2-NL-gi8" secondAttribute="top" id="UxV-qY-KKq"/>
-                                    <constraint firstAttribute="bottom" secondItem="wbi-cl-co9" secondAttribute="bottom" id="aNd-VY-1PE"/>
-                                    <constraint firstAttribute="trailing" secondItem="XCc-PW-MRD" secondAttribute="trailing" constant="30" id="acg-oE-GaK"/>
-                                    <constraint firstAttribute="bottom" secondItem="XCc-PW-MRD" secondAttribute="bottom" id="fUc-fW-pTg"/>
-                                    <constraint firstItem="wbi-cl-co9" firstAttribute="leading" secondItem="pn2-NL-gi8" secondAttribute="leading" constant="30" id="fxw-0v-FqJ"/>
-                                    <constraint firstItem="wbi-cl-co9" firstAttribute="top" secondItem="pn2-NL-gi8" secondAttribute="top" id="kkW-0t-E53"/>
-                                    <constraint firstItem="9lm-rR-S8L" firstAttribute="top" secondItem="pn2-NL-gi8" secondAttribute="top" id="rfo-c7-Yfa"/>
+                                    <constraint firstAttribute="width" constant="100" id="BMK-mZ-O3E"/>
+                                    <constraint firstAttribute="height" constant="100" id="YwJ-hT-4hd"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="ci7-tA-kCf"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="voH-e8-jAj"/>
                                 </constraints>
-                            </view>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="40"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="BMK-mZ-O3E"/>
+                                        <exclude reference="YwJ-hT-4hd"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <segue destination="pCA-FJ-2gf" kind="show" identifier="goToAlarmPage" id="yyF-xs-WD0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMJ-6f-T6t">
+                                <rect key="frame" x="0.0" y="173" width="600" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="SZC-1Q-rxV"/>
+                                    <constraint firstAttribute="height" constant="50" id="VcP-MV-6Wc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="20"/>
+                                <state key="normal" title="SLEEPY ? CLICK ME ☟">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="pn2-NL-gi8" secondAttribute="bottom" constant="28" id="9LY-Ig-xwi"/>
+                            <constraint firstItem="hMJ-6f-T6t" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="07t-Gd-a8F"/>
+                            <constraint firstAttribute="centerX" secondItem="9lm-rR-S8L" secondAttribute="centerX" id="7FS-4f-t9c"/>
                             <constraint firstAttribute="trailing" secondItem="fhh-uj-mdA" secondAttribute="trailing" id="CLw-0K-xHh"/>
+                            <constraint firstAttribute="centerY" secondItem="9lm-rR-S8L" secondAttribute="centerY" constant="-25" id="Dc2-1Q-CMT"/>
                             <constraint firstItem="fhh-uj-mdA" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="PJy-W3-u9n"/>
-                            <constraint firstItem="pn2-NL-gi8" firstAttribute="trailing" secondItem="fhh-uj-mdA" secondAttribute="trailing" id="T3f-M3-ftF"/>
-                            <constraint firstItem="pn2-NL-gi8" firstAttribute="trailing" secondItem="fhh-uj-mdA" secondAttribute="trailing" id="e0Y-BF-GO4"/>
+                            <constraint firstItem="hMJ-6f-T6t" firstAttribute="top" secondItem="fhh-uj-mdA" secondAttribute="bottom" id="hSL-vA-Kpd"/>
                             <constraint firstItem="fhh-uj-mdA" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="53" id="hym-Zc-kIZ"/>
-                            <constraint firstItem="pn2-NL-gi8" firstAttribute="leading" secondItem="fhh-uj-mdA" secondAttribute="leading" id="wzw-kB-GcM"/>
+                            <constraint firstAttribute="trailing" secondItem="hMJ-6f-T6t" secondAttribute="trailing" id="xm5-aM-bgn"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="e0Y-BF-GO4"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="clockLabel" destination="fhh-uj-mdA" id="lke-QY-RMl"/>
-                        <outlet property="homeBottomView" destination="pn2-NL-gi8" id="3zf-gR-SCl"/>
-                        <outlet property="homeLeftArrowLabel" destination="wbi-cl-co9" id="EIi-nE-3rd"/>
-                        <outlet property="homeRightArrowLabel" destination="XCc-PW-MRD" id="b7w-yj-h2H"/>
                         <outlet property="homeSetAlarmButton" destination="9lm-rR-S8L" id="xLc-kv-r8l"/>
                     </connections>
                 </viewController>
@@ -127,55 +103,68 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R2l-U1-GIw">
-                                <rect key="frame" x="0.0" y="172" width="600" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="ZE0-dR-3iH"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="15"/>
-                                <state key="normal" title="Set Alarm">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALARM INFO" textAlignment="center" lineBreakMode="middleTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ovd-jV-1TS">
-                                <rect key="frame" x="0.0" y="221" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="172" width="600" height="120"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" staticText="YES" notEnabled="YES"/>
                                 </accessibility>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="vnT-tn-WE6"/>
+                                    <constraint firstAttribute="height" constant="120" id="NhP-tQ-6el"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o7V-hh-NSY">
+                                <rect key="frame" x="0.0" y="530" width="600" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="fI3-0K-8il"/>
+                                </constraints>
+                                <state key="normal" title="CANCEL ALARM">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelAlarmAction:" destination="pCA-FJ-2gf" eventType="touchUpInside" id="YUB-NP-BRY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHI-8H-7RZ">
+                                <rect key="frame" x="0.0" y="481" width="600" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="LsP-Gd-Owu"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="pGH-L9-b4W"/>
+                                </constraints>
+                                <state key="normal" title="SET ALARM">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="setAlarmAction:" destination="pCA-FJ-2gf" eventType="touchUpInside" id="LNd-sk-Tfc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="R2l-U1-GIw" firstAttribute="top" secondItem="1ix-sq-3Mz" secondAttribute="bottom" constant="-1" id="2U4-nm-HLA"/>
+                            <constraint firstItem="XRc-7n-kIK" firstAttribute="top" secondItem="o7V-hh-NSY" secondAttribute="bottom" constant="20" id="93L-1W-9Nj"/>
+                            <constraint firstItem="o7V-hh-NSY" firstAttribute="top" secondItem="eHI-8H-7RZ" secondAttribute="bottom" constant="-1" id="GP7-GD-jzM"/>
+                            <constraint firstItem="Ovd-jV-1TS" firstAttribute="leading" secondItem="inl-tb-eMD" secondAttribute="leading" id="JdP-Gs-kk3"/>
                             <constraint firstItem="1ix-sq-3Mz" firstAttribute="leading" secondItem="inl-tb-eMD" secondAttribute="leading" id="PgL-wp-KDO"/>
+                            <constraint firstAttribute="trailing" secondItem="o7V-hh-NSY" secondAttribute="trailing" id="Ths-tf-rTS"/>
                             <constraint firstItem="1ix-sq-3Mz" firstAttribute="top" secondItem="QC6-ch-Ewt" secondAttribute="bottom" constant="53" id="VaB-u6-8pv"/>
-                            <constraint firstItem="R2l-U1-GIw" firstAttribute="trailing" secondItem="1ix-sq-3Mz" secondAttribute="trailing" id="WeP-io-gtS"/>
-                            <constraint firstItem="R2l-U1-GIw" firstAttribute="leading" secondItem="inl-tb-eMD" secondAttribute="leading" id="WlX-EZ-Wmr"/>
-                            <constraint firstItem="R2l-U1-GIw" firstAttribute="leading" secondItem="1ix-sq-3Mz" secondAttribute="leading" id="aeS-iN-tvA"/>
-                            <constraint firstAttribute="trailing" secondItem="R2l-U1-GIw" secondAttribute="trailing" id="bDp-il-O35"/>
-                            <constraint firstItem="Ovd-jV-1TS" firstAttribute="top" secondItem="R2l-U1-GIw" secondAttribute="bottom" constant="-1" id="dUB-ii-g42"/>
-                            <constraint firstItem="R2l-U1-GIw" firstAttribute="top" secondItem="QC6-ch-Ewt" secondAttribute="bottom" constant="152" id="fvY-My-2nD"/>
-                            <constraint firstAttribute="trailing" secondItem="Ovd-jV-1TS" secondAttribute="trailing" id="knK-oM-pP7"/>
+                            <constraint firstItem="o7V-hh-NSY" firstAttribute="leading" secondItem="inl-tb-eMD" secondAttribute="leading" id="eAe-gA-hDo"/>
+                            <constraint firstItem="eHI-8H-7RZ" firstAttribute="leading" secondItem="inl-tb-eMD" secondAttribute="leading" id="eCq-FD-Isx"/>
+                            <constraint firstAttribute="trailing" secondItem="Ovd-jV-1TS" secondAttribute="trailing" id="mfU-5Y-DOg"/>
+                            <constraint firstItem="1ix-sq-3Mz" firstAttribute="top" secondItem="Ovd-jV-1TS" secondAttribute="top" constant="-99" id="rrM-lx-hi1"/>
                             <constraint firstAttribute="trailing" secondItem="1ix-sq-3Mz" secondAttribute="trailing" id="w8i-ml-sbR"/>
-                            <constraint firstItem="Ovd-jV-1TS" firstAttribute="leading" secondItem="inl-tb-eMD" secondAttribute="leading" id="xIb-DQ-4Vn"/>
+                            <constraint firstAttribute="trailing" secondItem="eHI-8H-7RZ" secondAttribute="trailing" id="yaZ-a4-uiQ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="AlarmInfoLabel" destination="Ovd-jV-1TS" id="tlJ-Ci-hxP"/>
                         <outlet property="clockLabel" destination="1ix-sq-3Mz" id="829-Hk-vJ5"/>
-                        <outlet property="setAlarmButton" destination="R2l-U1-GIw" id="Egz-GK-Pbg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mMt-ms-zYy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="968" y="265"/>
+            <point key="canvasLocation" x="1298" y="267"/>
         </scene>
     </scenes>
 </document>
