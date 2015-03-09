@@ -64,7 +64,7 @@
     
     //
     CGContextAddArc(ctx, self.frame.size.width / 2, self.frame.size.height / 2, radius, 0, M_PI * 2, 0);
-    [[UIColor colorWithWhite:1.0f alpha:0.8f] setStroke];
+    [[UIColor colorWithWhite:1.0f alpha:0.5f] setStroke];
     
     CGContextSetLineWidth(ctx, ALARM_SLIDER_PATH);
     CGContextSetLineCap(ctx, kCGLineCapButt);

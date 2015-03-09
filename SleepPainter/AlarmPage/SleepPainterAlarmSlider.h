@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 
 #define ALARM_SLIDER_SIZE           190
-#define ALARM_SLIDER_PATH           3
+#define ALARM_SLIDER_PATH           1
 #define ALARM_SLIDER_HANDLE         18
 #define ALARM_SLIDER_PADDING        20
 #define ALARM_SLIDER_ANGLEOFFSET    180

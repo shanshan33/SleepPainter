@@ -17,6 +17,7 @@
 		C10CCBCC1A9D29610031F29E /* SleepPainterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C10CCBCB1A9D29610031F29E /* SleepPainterTests.m */; };
 		C158F9A01A9E6D2F001B6DF3 /* AlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C158F99F1A9E6D2F001B6DF3 /* AlarmViewController.m */; };
 		C158F9A31A9E71F3001B6DF3 /* SleepPainterAlarmSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = C158F9A21A9E71F3001B6DF3 /* SleepPainterAlarmSlider.m */; };
+		C158F9A61AAE47B0001B6DF3 /* jellyEffectView.m in Sources */ = {isa = PBXBuildFile; fileRef = C158F9A51AAE47B0001B6DF3 /* jellyEffectView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,8 @@
 		C158F99F1A9E6D2F001B6DF3 /* AlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlarmViewController.m; path = AlarmPage/AlarmViewController.m; sourceTree = "<group>"; };
 		C158F9A11A9E71F3001B6DF3 /* SleepPainterAlarmSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SleepPainterAlarmSlider.h; path = AlarmPage/SleepPainterAlarmSlider.h; sourceTree = "<group>"; };
 		C158F9A21A9E71F3001B6DF3 /* SleepPainterAlarmSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SleepPainterAlarmSlider.m; path = AlarmPage/SleepPainterAlarmSlider.m; sourceTree = "<group>"; };
+		C158F9A41AAE47B0001B6DF3 /* jellyEffectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jellyEffectView.h; sourceTree = "<group>"; };
+		C158F9A51AAE47B0001B6DF3 /* jellyEffectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jellyEffectView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +136,8 @@
 			children = (
 				C10CCBB61A9D29610031F29E /* ViewController.h */,
 				C10CCBB71A9D29610031F29E /* ViewController.m */,
+				C158F9A41AAE47B0001B6DF3 /* jellyEffectView.h */,
+				C158F9A51AAE47B0001B6DF3 /* jellyEffectView.m */,
 			);
 			name = HomePage;
 			sourceTree = "<group>";
@@ -250,6 +255,7 @@
 			files = (
 				C158F9A31A9E71F3001B6DF3 /* SleepPainterAlarmSlider.m in Sources */,
 				C10CCBB21A9D29610031F29E /* AppDelegate.m in Sources */,
+				C158F9A61AAE47B0001B6DF3 /* jellyEffectView.m in Sources */,
 				C158F9A01A9E6D2F001B6DF3 /* AlarmViewController.m in Sources */,
 				C10CCBAF1A9D29610031F29E /* main.m in Sources */,
 				C10CCBB81A9D29610031F29E /* ViewController.m in Sources */,

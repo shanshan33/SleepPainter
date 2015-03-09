@@ -10,8 +10,8 @@
 #import "SleepPainterAlarmSlider.h"
 
 #define CHANGE_SKY_INTERVAL 10
-#define ALARM_HOUR_SLIDER_SIZE           220
-#define ALARM_MINUTES_SLIDER_SIZE        150
+#define ALARM_HOUR_SLIDER_SIZE           140
+#define ALARM_MINUTES_SLIDER_SIZE        240
 
 
 @interface AlarmViewController ()
@@ -50,7 +50,7 @@
     self.awakeMins = @"0";
     self.awakeHour = @"0";
     
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"SP_backgroundDark.png"]]];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"SP_background_12am.png"]]];
     
     // Set up alarm panel
     NSDateFormatter *alarmFormat = [[NSDateFormatter alloc] init];
@@ -108,11 +108,10 @@
     // Do dummy action, changing image every ten seconds
     switch (dummyToggle) {
         case 0:
-            [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"SP_backgroundlight.png"]]];
-            
+            [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"SP_background_3am.png"]]];
             break;
         case 1:
-            [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"SP_backgroundDark.png"]]];
+            [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"SP_background_12am.png"]]];
             break;
         default:
             break;
@@ -169,7 +168,7 @@
 - (IBAction)setAlarmAction:(id)sender
 {
     NSDate *currentDate = [NSDate date];
-    NSDate *datePlusOneMinute = [currentDate dateByAddingTimeInterval:120];
+    NSDate *datePlusOneMinute = [currentDate dateByAddingTimeInterval:60];
 
     [self configureLocalNotificationWithData:datePlusOneMinute];
     NSLog(@"alarm time %@",datePlusOneMinute);
@@ -204,6 +203,8 @@
     [alert show];
     
 }
+
+
 
 
 
