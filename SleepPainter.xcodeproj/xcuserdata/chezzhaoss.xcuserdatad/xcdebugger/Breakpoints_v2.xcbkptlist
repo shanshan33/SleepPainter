@@ -57,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SleepPainter/AlarmPage/SleepPainterAlarmSlider.m"
-            timestampString = "447716579.419627"
+            filePath = "SleepPainter/ViewController.m"
+            timestampString = "448065195.820758"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "-initWithFrame:"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "-clickOwlToSetAlarm:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

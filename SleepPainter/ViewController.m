@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "AlarmViewController.h"
 #import "jellyEffectView.h"
 #import "SleepPainterAlarmSlider.h"
 
@@ -135,13 +134,11 @@
 -(void)configOwlButton
 {
     [self.homeSetAlarmButton setTitle:@" ,___,\n(︶,︶)..zZ\n /)__ )\n   \"  \"" forState:UIControlStateNormal];
-    [self.homeSetAlarmButton setBackgroundColor:[UIColor redColor]];
 }
 
 -(void)configureImageButton
 {
     [self.goImagesPageButton setTitle:@"        ,___,\n ★.*(⌒,⌒)‧:*‧°★*\n        /)__ )\n          \"  \"" forState:UIControlStateNormal];
-    [self.goImagesPageButton setBackgroundColor:[UIColor greenColor]];
 }
 
 #pragma mark - actions
@@ -155,9 +152,13 @@
     CGFloat hiddenTopMargin   = 0;                  //隐藏在下面的时候，这个距离为0
     CGFloat showedTopMargin   = -actionSheetHeight; //滑到上面的时候，这个距离就是ActionSheet的高度
     CGFloat newTopMargin      = abs(self.centerViewTopConstrain.constant - hiddenTopMargin) < 1 ? showedTopMargin : hiddenTopMargin;
+    if (newTopMargin == 0)
+    {
+        self.goImagesPageButton.hidden = NO;
+        self.drawYourDreamLabel.hidden = NO;
+    }
     //如果中间那个辅助小方块藏在下面时，那么它的下一个位置就是在（-actionSheetHeight）的位置，所以，设置新的约束值（newTopMargin = -actionSheetHeight）,即：（newTopMargin = showedTopMargin）;
     //只要小方块在上方，那么它的下一个位置就是回到底部隐藏的位置，也就是新的约束值newTopMargin ＝ hiddenTopMargin.
-    
     
     //先处理旁边那个辅助方块的约束
     self.sideViewTopConstrain.constant = newTopMargin;
@@ -223,12 +224,14 @@
     {
         self.minutesSlider = [[SleepPainterAlarmSlider alloc] initWithFrame:CGRectMake((self.jellyEffectView.frame.size.width - ALARM_MINUTES_SLIDER_SIZE)/2, 40, ALARM_MINUTES_SLIDER_SIZE, ALARM_MINUTES_SLIDER_SIZE)];
         [self.jellyEffectView addSubview:self.minutesSlider];
+        [self.minutesSlider addTarget:self action:@selector(newMinsValue) forControlEvents:UIControlEventValueChanged];
     }
     
     if (!self.hourSlider)
     {
         self.hourSlider = [[SleepPainterAlarmSlider alloc] initWithFrame:CGRectMake((self.jellyEffectView.frame.size.width - ALARM_HOUR_SLIDER_SIZE)/2, 90, ALARM_HOUR_SLIDER_SIZE, ALARM_HOUR_SLIDER_SIZE)];
         [self.jellyEffectView addSubview:self.hourSlider];
+        [self.hourSlider addTarget:self action:@selector(newHourValue) forControlEvents:UIControlEventValueChanged];
     }
     
     if (!self.wakeUpLabel)

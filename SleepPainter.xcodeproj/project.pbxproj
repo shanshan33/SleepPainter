@@ -15,9 +15,10 @@
 		C10CCBBD1A9D29610031F29E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C10CCBBC1A9D29610031F29E /* Images.xcassets */; };
 		C10CCBC01A9D29610031F29E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C10CCBBE1A9D29610031F29E /* LaunchScreen.xib */; };
 		C10CCBCC1A9D29610031F29E /* SleepPainterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C10CCBCB1A9D29610031F29E /* SleepPainterTests.m */; };
-		C158F9A01A9E6D2F001B6DF3 /* AlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C158F99F1A9E6D2F001B6DF3 /* AlarmViewController.m */; };
 		C158F9A31A9E71F3001B6DF3 /* SleepPainterAlarmSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = C158F9A21A9E71F3001B6DF3 /* SleepPainterAlarmSlider.m */; };
 		C158F9A61AAE47B0001B6DF3 /* jellyEffectView.m in Sources */ = {isa = PBXBuildFile; fileRef = C158F9A51AAE47B0001B6DF3 /* jellyEffectView.m */; };
+		C158F9A91AB49D9D001B6DF3 /* PaintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C158F9A81AB49D9D001B6DF3 /* PaintViewController.m */; };
+		C158F9AB1AB4A5D1001B6DF3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C158F9AA1AB4A5D1001B6DF3 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,12 +46,13 @@
 		C10CCBC51A9D29610031F29E /* SleepPainterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SleepPainterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C10CCBCA1A9D29610031F29E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C10CCBCB1A9D29610031F29E /* SleepPainterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SleepPainterTests.m; sourceTree = "<group>"; };
-		C158F99E1A9E6D2F001B6DF3 /* AlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlarmViewController.h; path = AlarmPage/AlarmViewController.h; sourceTree = "<group>"; };
-		C158F99F1A9E6D2F001B6DF3 /* AlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlarmViewController.m; path = AlarmPage/AlarmViewController.m; sourceTree = "<group>"; };
 		C158F9A11A9E71F3001B6DF3 /* SleepPainterAlarmSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SleepPainterAlarmSlider.h; path = AlarmPage/SleepPainterAlarmSlider.h; sourceTree = "<group>"; };
 		C158F9A21A9E71F3001B6DF3 /* SleepPainterAlarmSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SleepPainterAlarmSlider.m; path = AlarmPage/SleepPainterAlarmSlider.m; sourceTree = "<group>"; };
 		C158F9A41AAE47B0001B6DF3 /* jellyEffectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jellyEffectView.h; sourceTree = "<group>"; };
 		C158F9A51AAE47B0001B6DF3 /* jellyEffectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jellyEffectView.m; sourceTree = "<group>"; };
+		C158F9A71AB49D9D001B6DF3 /* PaintViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaintViewController.h; sourceTree = "<group>"; };
+		C158F9A81AB49D9D001B6DF3 /* PaintViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaintViewController.m; sourceTree = "<group>"; };
+		C158F9AA1AB4A5D1001B6DF3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C158F9AB1AB4A5D1001B6DF3 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,7 +99,7 @@
 				C10CCBB11A9D29610031F29E /* AppDelegate.m */,
 				C10CCBB91A9D29610031F29E /* Main.storyboard */,
 				C158F99C1A9D3C78001B6DF3 /* HomePage */,
-				C158F99D1A9E6CCE001B6DF3 /* AlarmPage */,
+				C158F99D1A9E6CCE001B6DF3 /* PaintPage */,
 				C10CCBBC1A9D29610031F29E /* Images.xcassets */,
 				C10CCBBE1A9D29610031F29E /* LaunchScreen.xib */,
 				C10CCBB31A9D29610031F29E /* SleepPainter.xcdatamodeld */,
@@ -108,6 +111,7 @@
 		C10CCBAC1A9D29610031F29E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C158F9AA1AB4A5D1001B6DF3 /* QuartzCore.framework */,
 				C10CCBAD1A9D29610031F29E /* Info.plist */,
 				C10CCBAE1A9D29610031F29E /* main.m */,
 			);
@@ -138,19 +142,19 @@
 				C10CCBB71A9D29610031F29E /* ViewController.m */,
 				C158F9A41AAE47B0001B6DF3 /* jellyEffectView.h */,
 				C158F9A51AAE47B0001B6DF3 /* jellyEffectView.m */,
+				C158F9A11A9E71F3001B6DF3 /* SleepPainterAlarmSlider.h */,
+				C158F9A21A9E71F3001B6DF3 /* SleepPainterAlarmSlider.m */,
 			);
 			name = HomePage;
 			sourceTree = "<group>";
 		};
-		C158F99D1A9E6CCE001B6DF3 /* AlarmPage */ = {
+		C158F99D1A9E6CCE001B6DF3 /* PaintPage */ = {
 			isa = PBXGroup;
 			children = (
-				C158F99E1A9E6D2F001B6DF3 /* AlarmViewController.h */,
-				C158F99F1A9E6D2F001B6DF3 /* AlarmViewController.m */,
-				C158F9A11A9E71F3001B6DF3 /* SleepPainterAlarmSlider.h */,
-				C158F9A21A9E71F3001B6DF3 /* SleepPainterAlarmSlider.m */,
+				C158F9A71AB49D9D001B6DF3 /* PaintViewController.h */,
+				C158F9A81AB49D9D001B6DF3 /* PaintViewController.m */,
 			);
-			name = AlarmPage;
+			name = PaintPage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,7 +260,7 @@
 				C158F9A31A9E71F3001B6DF3 /* SleepPainterAlarmSlider.m in Sources */,
 				C10CCBB21A9D29610031F29E /* AppDelegate.m in Sources */,
 				C158F9A61AAE47B0001B6DF3 /* jellyEffectView.m in Sources */,
-				C158F9A01A9E6D2F001B6DF3 /* AlarmViewController.m in Sources */,
+				C158F9A91AB49D9D001B6DF3 /* PaintViewController.m in Sources */,
 				C10CCBAF1A9D29610031F29E /* main.m in Sources */,
 				C10CCBB81A9D29610031F29E /* ViewController.m in Sources */,
 				C10CCBB51A9D29610031F29E /* SleepPainter.xcdatamodeld in Sources */,
