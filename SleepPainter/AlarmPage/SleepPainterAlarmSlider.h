@@ -15,6 +15,7 @@
 #define ALARM_SLIDER_PADDING        20
 #define ALARM_SLIDER_ANGLEOFFSET    180
 #define offset2(deg)                ( ((deg) + 360 - ALARM_SLIDER_ANGLEOFFSET) % 360 )
+#define offset(deg)                 ( ((deg) + ALARM_SLIDER_ANGLEOFFSET) % 360 )
 
 
 @interface SleepPainterAlarmSlider : UIControl

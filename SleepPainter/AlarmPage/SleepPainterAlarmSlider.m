@@ -13,7 +13,6 @@
 #define ToRad(deg) 		( (M_PI * (deg)) / 180.0 )
 #define ToDeg(rad)		( (180.0 * (rad)) / M_PI )
 #define SQR(x)			( (x) * (x) )
-#define offset(deg)     ( ((deg) + ALARM_SLIDER_ANGLEOFFSET) % 360 )
 
 @interface SleepPainterAlarmSlider() {
     int radius;
