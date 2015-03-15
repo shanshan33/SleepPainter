@@ -97,7 +97,7 @@
     // Test background image changing
     [clockFormat setDateFormat:@"s"];
     int seconds = [[clockFormat stringFromDate:[NSDate date]] intValue];
-    if (seconds % CHANGE_SKY_INTERVAL == 0)
+    if (seconds % CHANGE_SKY_INTERVAL*360 == 0)
     {
         [self updateBackgroundImage];
     }
@@ -310,9 +310,9 @@
 {
     // this date will be replace by alarm user set
     NSDate *currentDate = [NSDate date];
-    NSDate *datePlusOneMinute = [currentDate dateByAddingTimeInterval:60];
+    NSDate *datePlusEightHours = [currentDate dateByAddingTimeInterval:8*60*60];
     
-    [self configureLocalNotificationWithData:datePlusOneMinute];
+    [self configureLocalNotificationWithData:datePlusEightHours];
     [self presentMessage:[NSString stringWithFormat:@"Go Sleep zZZZ.. Wake up at %@",currentDate]];
     
 }

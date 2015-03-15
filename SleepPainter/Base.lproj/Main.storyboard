@@ -190,6 +190,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="iDrawYourDream:" destination="5QR-PG-cTC" eventType="touchUpInside" id="4DI-lA-bfR"/>
+                                </connections>
                             </button>
                             <button opaque="NO" alpha="0.49999999999999961" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="in0-T5-Nuw">
                                 <rect key="frame" x="36" y="494" width="155" height="50"/>
@@ -202,6 +205,7 @@
                                 </state>
                                 <connections>
                                     <action selector="backAction:" destination="5QR-PG-cTC" eventType="touchUpInside" id="iik-Xb-Wos"/>
+                                    <segue destination="vXZ-lx-hvc" kind="show" id="AKt-O8-SYi"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4I-6D-7U9">
@@ -259,6 +263,7 @@
                             <constraint firstItem="Eki-nv-iGr" firstAttribute="leading" secondItem="in0-T5-Nuw" secondAttribute="trailing" constant="15" id="zXz-b5-7Bf"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="0Tf-4s-Nib"/>
                     <connections>
                         <outlet property="Owl" destination="czo-Ci-EMa" id="xK5-bk-1za"/>
                         <outlet property="backButton" destination="in0-T5-Nuw" id="ASl-3O-g79"/>
