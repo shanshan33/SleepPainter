@@ -9,6 +9,9 @@
 #import "ViewController.h"
 #import "jellyEffectView.h"
 #import "SleepPainterAlarmSlider.h"
+#import "PaintViewController.h"
+#import <CoreMotion/CoreMotion.h>
+
 
 #define CHANGE_SKY_INTERVAL              10
 #define ALARM_HOUR_SLIDER_SIZE           140
@@ -44,6 +47,10 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *drawYourDreamLabel;
 @property (weak, nonatomic) IBOutlet UIButton *goImagesPageButton;
+
+
+//motions
+@property (strong, nonatomic) CMMotionManager *motionManager;
 
 
 @end
@@ -83,7 +90,15 @@
     
     self.sideHelperView.hidden   = YES;
     self.centerHelperView.hidden = YES;
+    self.navigationController.navigationBarHidden = YES;
+    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+}
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:YES];   //it hides
 }
 
 
@@ -101,7 +116,6 @@
     {
         [self updateBackgroundImage];
     }
-    //
     [self performSelector:@selector(updateClock) withObject:self afterDelay:1.0f];
 }
 
@@ -313,8 +327,10 @@
     NSDate *datePlusEightHours = [currentDate dateByAddingTimeInterval:8*60*60];
     
     [self configureLocalNotificationWithData:datePlusEightHours];
-    [self presentMessage:[NSString stringWithFormat:@"Go Sleep zZZZ.. Wake up at %@",currentDate]];
+    [self presentMessage:[NSString stringWithFormat:@"Go Sleep zZZZ.. Wake me up at %@",currentDate]];
     
+    //start motion detect..
+    [self startDetectMovement];
 }
 
 -(void)clickToCancelAlarm
@@ -343,6 +359,100 @@
     [alert show];
     
 }
+
+#pragma mark -motion detect 
+
+-(void)startDetectMovement
+{
+    
+    self.motionManager = [[CMMotionManager alloc] init];
+    self.motionManager.accelerometerUpdateInterval = 0.5;
+    self.motionManager.gyroUpdateInterval = 0.5;
+    
+    [self.motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue currentQueue]
+                                             withHandler:^(CMAccelerometerData *accelerometerData, NSError *error) {
+                                                 [self outputAccelertionData:accelerometerData.acceleration];
+                                                 if(error){
+                                                     
+                                                     NSLog(@"%@", error);
+                                                 }
+                                             }];
+    
+    [self.motionManager startGyroUpdatesToQueue:[NSOperationQueue currentQueue]
+                                    withHandler:^(CMGyroData *gyroData, NSError *error) {
+                                        [self outputRotationData:gyroData.rotationRate];
+                                    }];
+
+}
+
+-(void)outputAccelertionData:(CMAcceleration)acceleration
+{
+    double currentMaxAccelX = 0;
+    double currentMaxAccelY = 0;
+    double currentMaxAccelZ = 0;
+    
+    NSLog(@"Acceleration.x = %fg",acceleration.x);
+    if(fabs(acceleration.x) > fabs(currentMaxAccelX))
+    {
+        currentMaxAccelX = acceleration.x;
+    }
+    NSMutableArray * accelerationX = [NSMutableArray new];
+    [accelerationX addObject:[NSString stringWithFormat:@" %f",acceleration.x]];
+    
+    NSLog(@"Acceleration.y = %fg",acceleration.y);
+    if(fabs(acceleration.y) > fabs(currentMaxAccelY))
+    {
+        currentMaxAccelY = acceleration.y;
+    }
+    NSMutableArray * accelerationY = [NSMutableArray new];
+    [accelerationY addObject:[NSString stringWithFormat:@" %f",acceleration.y]];
+    
+    NSLog(@"Acceleration.z = %fg",acceleration.z);
+    if(fabs(acceleration.y) > fabs(currentMaxAccelY))
+    {
+        currentMaxAccelZ = acceleration.z;
+    }
+    NSMutableArray * accelerationZ = [NSMutableArray new];
+    [accelerationZ addObject:[NSString stringWithFormat:@" %f",acceleration.z]];
+}
+
+
+-(void)outputRotationData:(CMRotationRate)rotation
+{
+    double currentMaxRotX   = 0;
+    double currentMaxRotY   = 0;
+    double currentMaxRotZ   = 0;
+    
+    
+    NSLog(@"Rotation.x = %fg",rotation.x);
+    if(fabs(rotation.x)> fabs(currentMaxRotX))
+    {
+        currentMaxRotX = rotation.x;
+    }
+    NSMutableArray * rotationX = [NSMutableArray new];
+    [rotationX addObject:[NSString stringWithFormat:@"%f",rotation.x]];
+    
+    NSLog(@"Rotation.y = %fg",rotation.y);
+    if(fabs(rotation.y) > fabs(currentMaxRotY))
+    {
+        currentMaxRotY = rotation.y;
+    }
+    
+    NSMutableArray * rotationY = [NSMutableArray new];
+    [rotationY addObject:[NSString stringWithFormat:@"%f",rotation.y]];
+    
+    NSLog(@"Rotation.z = %fg",rotation.z);
+    if(fabs(rotation.z) > fabs(currentMaxRotZ))
+    {
+        currentMaxRotZ = rotation.z;
+    }
+    NSMutableArray * rotationZ = [NSMutableArray new];
+    [rotationZ addObject:[NSString stringWithFormat:@" %f",rotation.z]];
+
+
+}
+
+
 
 
 @end

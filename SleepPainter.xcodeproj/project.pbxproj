@@ -19,6 +19,7 @@
 		C158F9A61AAE47B0001B6DF3 /* jellyEffectView.m in Sources */ = {isa = PBXBuildFile; fileRef = C158F9A51AAE47B0001B6DF3 /* jellyEffectView.m */; };
 		C158F9A91AB49D9D001B6DF3 /* PaintViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C158F9A81AB49D9D001B6DF3 /* PaintViewController.m */; };
 		C158F9AB1AB4A5D1001B6DF3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C158F9AA1AB4A5D1001B6DF3 /* QuartzCore.framework */; };
+		C1BC13EB1ABE2E83000D70E0 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1BC13EA1ABE2E83000D70E0 /* CoreMotion.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		C158F9A71AB49D9D001B6DF3 /* PaintViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaintViewController.h; sourceTree = "<group>"; };
 		C158F9A81AB49D9D001B6DF3 /* PaintViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaintViewController.m; sourceTree = "<group>"; };
 		C158F9AA1AB4A5D1001B6DF3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C1BC13EA1ABE2E83000D70E0 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1BC13EB1ABE2E83000D70E0 /* CoreMotion.framework in Frameworks */,
 				C158F9AB1AB4A5D1001B6DF3 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,6 +80,7 @@
 		C10CCBA01A9D29610031F29E = {
 			isa = PBXGroup;
 			children = (
+				C1BC13EA1ABE2E83000D70E0 /* CoreMotion.framework */,
 				C10CCBAB1A9D29610031F29E /* SleepPainter */,
 				C10CCBC81A9D29610031F29E /* SleepPainterTests */,
 				C10CCBAA1A9D29610031F29E /* Products */,

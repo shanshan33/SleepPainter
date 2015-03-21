@@ -46,7 +46,10 @@
                                            self.view.frame.size.width - 4*self.paintViewWidthMargin.constant,
                                            self.view.frame.size.height - 280);
     [self.view.layer addSublayer:self.animationLayer];
-    
+    self.navigationController.navigationBarHidden = NO;
+    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationItem.title = @"I DRAW YOUR DREAM...";
 }
 
 - (UIBezierPath *)myPath
@@ -157,7 +160,7 @@
 
 - (IBAction)backAction:(id)sender
 {
-    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)saveMyPaint:(id)sender
@@ -188,14 +191,6 @@
     UIGraphicsEndImageContext();
     
     return newImage;
-    
 }
-/*
--(IBAction)saveImageToAlbum:(id)sender
-{
-    UIImage * image = [self saveImage:self.view];
-    
-    UIImageWriteToSavedPhotosAlbum(image, self, nil, nil);
-}
-*/
+
 @end
