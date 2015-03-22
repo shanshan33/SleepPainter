@@ -16,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *Owl;
 @property (weak, nonatomic) IBOutlet UIView *paintingView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *paintViewWidthMargin;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *paintViewHeight;
 @property (weak, nonatomic) IBOutlet UIButton *saveImageButton;
 @property (weak, nonatomic) IBOutlet UIButton *shareWithEmailButton;
 
@@ -24,6 +23,7 @@
 @property (nonatomic, retain) CALayer    *animationLayer;
 @property (nonatomic, weak) CAShapeLayer *pathLayer;
 
+@property (weak, nonatomic) IBOutlet UILabel *drawLabel;
 
 
 @end
@@ -32,21 +32,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"SP_background_12am.png"]]];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"SP_background_5am.png"]]];
     [self.Owl setTitle:@"        ,___,\n ★.*(⌒,⌒)‧:*‧°★*\n        /)__ )\n          \"  \"" forState:UIControlStateNormal];
+    [self.Owl setTintColor:[UIColor whiteColor]];
     
     [self.saveImageButton setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.2]];
     [self.shareWithEmailButton setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.2]];
     
     self.animationLayer = [CALayer layer];
-    self.animationLayer.frame = CGRectMake(self.paintingView.frame.origin.x, self.paintingView.frame.origin.y,
-                                           self.view.frame.size.width - 4*self.paintViewWidthMargin.constant,
-                                           self.view.frame.size.height - 280);
+    
+    self.animationLayer = self.paintingView.layer;
     [self.view.layer addSublayer:self.animationLayer];
     self.navigationController.navigationBarHidden = NO;
-//    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
-    self.navigationController.navigationBar.tintColor = [UIColor blueColor];
-    self.navigationItem.title = @"I DRAW YOUR DREAM...";
+    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.drawLabel.text = @"I 🎨 YOUR DREAM.. CLICK ME TO SEE";
 }
 
 - (UIBezierPath *)myPath
@@ -78,7 +78,7 @@
     }
 
     CAGradientLayer * gradientLayer = [CAGradientLayer layer];
-    gradientLayer.frame = self.animationLayer.bounds;
+    gradientLayer.frame = self.paintingView.layer.bounds;
     gradientLayer.colors = @[(__bridge id)[UIColor redColor].CGColor,
                              (__bridge id)[UIColor orangeColor].CGColor,
                              (__bridge id)[UIColor yellowColor].CGColor,
@@ -91,7 +91,7 @@
     [self.animationLayer addSublayer:gradientLayer];
 
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
-    shapeLayer.frame = self.animationLayer.bounds;
+ //   shapeLayer.frame = self.animationLayer.bounds;
     
     shapeLayer.path = [[self myPath] CGPath];
     shapeLayer.strokeColor = [UIColor redColor].CGColor;

@@ -216,7 +216,7 @@
     NSDateFormatter *clockFormat = [[NSDateFormatter alloc] init];
     [clockFormat setDateFormat:@"mm"];
     
-    self.wakeUpLabel.text = [NSString stringWithFormat:@"WAKE ME UP AT %@ %@h%@",dayDescription,self.hour,[clockFormat stringFromDate:[NSDate date]]];
+    self.wakeUpLabel.text = [NSString stringWithFormat:@"WAKE ME UP AT %@ %@hr%@min",dayDescription,self.hour,[clockFormat stringFromDate:[NSDate date]]];
   
     self.userWakeUpTime = [[NSDate date] dateByAddingTimeInterval:(hours+1) * 60 * 60];
     NSLog(@"wake up time at hours%@",self.userWakeUpTime);
