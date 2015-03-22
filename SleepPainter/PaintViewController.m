@@ -17,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIView *paintingView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *paintViewWidthMargin;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *paintViewHeight;
-@property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UIButton *saveImageButton;
 @property (weak, nonatomic) IBOutlet UIButton *shareWithEmailButton;
 
@@ -30,14 +29,12 @@
 @end
 @implementation PaintViewController
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"SP_background_12am.png"]]];
     [self.Owl setTitle:@"        ,___,\n ★.*(⌒,⌒)‧:*‧°★*\n        /)__ )\n          \"  \"" forState:UIControlStateNormal];
     
-    [self.backButton setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.2]];
     [self.saveImageButton setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.2]];
     [self.shareWithEmailButton setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.2]];
     
@@ -47,15 +44,15 @@
                                            self.view.frame.size.height - 280);
     [self.view.layer addSublayer:self.animationLayer];
     self.navigationController.navigationBarHidden = NO;
-    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+//    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+    self.navigationController.navigationBar.tintColor = [UIColor blueColor];
     self.navigationItem.title = @"I DRAW YOUR DREAM...";
 }
 
 - (UIBezierPath *)myPath
 {
     UIBezierPath *aPath = [UIBezierPath bezierPath];
-        
+    
     aPath.lineCapStyle = kCGLineCapRound;
     aPath.lineJoinStyle = kCGLineCapRound;
     // Set the starting point of the shape.
@@ -82,7 +79,6 @@
 
     CAGradientLayer * gradientLayer = [CAGradientLayer layer];
     gradientLayer.frame = self.animationLayer.bounds;
-    
     gradientLayer.colors = @[(__bridge id)[UIColor redColor].CGColor,
                              (__bridge id)[UIColor orangeColor].CGColor,
                              (__bridge id)[UIColor yellowColor].CGColor,
@@ -103,9 +99,7 @@
     shapeLayer.lineWidth = 20.0f;
     shapeLayer.lineJoin = kCALineJoinBevel;
     [gradientLayer setMask:shapeLayer];
-
     self.pathLayer = shapeLayer;
-
 
     UIImage *penImage = [UIImage imageNamed:@"pencil_icon.png"];
     CALayer *penLayer = [CALayer layer];

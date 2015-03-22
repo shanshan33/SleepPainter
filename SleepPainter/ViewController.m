@@ -42,6 +42,7 @@
 @property (strong,nonatomic)SleepPainterAlarmSlider * minutesSlider;
 @property (nonatomic) int alarmDuration;
 @property (nonatomic,strong) UILabel * wakeUpLabel;
+@property (nonatomic,strong) NSDate  * userWakeUpTime;
 @property (nonatomic,strong) NSString * hour;
 @property (nonatomic,strong) NSString * min;
 
@@ -92,6 +93,7 @@
     self.centerHelperView.hidden = YES;
     self.navigationController.navigationBarHidden = YES;
     self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -197,36 +199,63 @@
 
 -(void)newHourValue
 {
-    NSDate *date = [NSDate date];
-    NSTimeZone *zone = [NSTimeZone systemTimeZone];
-    NSInteger interval = [zone secondsFromGMTForDate: date];
-    NSDate *localeDate = [date  dateByAddingTimeInterval: interval];
+    NSInteger hours = ABS(offset(self.hourSlider.angle)/15);
     
-    NSInteger hours = ABS(offset(self.hourSlider.angle)/30);
-    
-    NSDate * wakeTime = [localeDate dateByAddingTimeInterval:hours * 60 * 60];
+    NSDate * wakeTime = [[NSDate date]dateByAddingTimeInterval:hours * 60 * 60];
     NSDateFormatter * hourFormatter = [[NSDateFormatter alloc] init];
     [hourFormatter setDateFormat:@"HH"];
     
     self.hour = [NSString stringWithFormat:@"%@",[hourFormatter stringFromDate:wakeTime]];
-    self.wakeUpLabel.text = [NSString stringWithFormat:@"%@:%@",self.hour ,self.min? self.min :@""];
+
+    NSString *dayDescription = @"TONIGHT";
+    NSDateFormatter *dayFormat = [[NSDateFormatter alloc] init];
+    [dayFormat setDateFormat:@"d"];
+    if ([[dayFormat stringFromDate:[NSDate date]] intValue] != [[dayFormat stringFromDate:wakeTime] intValue])
+        dayDescription = @"TOMORROW";
+    
+    NSDateFormatter *clockFormat = [[NSDateFormatter alloc] init];
+    [clockFormat setDateFormat:@"mm"];
+    
+    self.wakeUpLabel.text = [NSString stringWithFormat:@"WAKE ME UP AT %@ %@h%@",dayDescription,self.hour,[clockFormat stringFromDate:[NSDate date]]];
+  
+    self.userWakeUpTime = [[NSDate date] dateByAddingTimeInterval:(hours+1) * 60 * 60];
+    NSLog(@"wake up time at hours%@",self.userWakeUpTime);
+
+
 }
 
 -(void)newMinsValue
 {
-    NSDate *date = [NSDate date];
-    NSTimeZone *zone = [NSTimeZone systemTimeZone];
-    NSInteger interval = [zone secondsFromGMTForDate: date];
-    NSDate *localeDate = [date  dateByAddingTimeInterval: interval];
-    
     NSInteger mins = ABS(offset(self.minutesSlider.angle)/6);
     
-    NSDate * wakeTime = [localeDate dateByAddingTimeInterval:mins * 60];
+    NSDate * wakeTime = [[NSDate date] dateByAddingTimeInterval:mins * 60];
     NSDateFormatter * minsFormatter = [[NSDateFormatter alloc] init];
     [minsFormatter setDateFormat:@"mm"];
     
+    NSString *dayDescription = @"TODAY";
+    NSDateFormatter *dayFormat = [[NSDateFormatter alloc] init];
+    [dayFormat setDateFormat:@"d"];
+    if ([[dayFormat stringFromDate:[NSDate date]] intValue] != [[dayFormat stringFromDate:wakeTime] intValue])
+        dayDescription = @"TOMORROW";
+    
+    NSDateFormatter *clockFormat = [[NSDateFormatter alloc] init];
+    [clockFormat setDateFormat:@"HH"];
+    
     self.min = [NSString stringWithFormat:@"%@",[minsFormatter stringFromDate:wakeTime]];
-    self.wakeUpLabel.text = [NSString stringWithFormat:@"%@:%@",self.hour ? self.hour : @"" ,self.min];
+    self.wakeUpLabel.text = [NSString stringWithFormat:@"WAKE ME UP AT %@ %@hr%@min",dayDescription,[clockFormat stringFromDate:[NSDate date]],self.min];
+    
+    double timeInterval;
+    
+    if (([self.min intValue] >= [[minsFormatter stringFromDate:[NSDate date] ] intValue]) && [self.min intValue] < 60)
+    {
+       timeInterval  = 60 *60 + mins*60;
+    }
+        else
+    {
+        timeInterval = mins * 60;
+    }
+    self.userWakeUpTime = [[NSDate date] dateByAddingTimeInterval:timeInterval];
+    NSLog(@"wake up time at mins%@",self.userWakeUpTime);
 }
 
 
@@ -236,38 +265,38 @@
 {
     if (!self.minutesSlider)
     {
-        self.minutesSlider = [[SleepPainterAlarmSlider alloc] initWithFrame:CGRectMake((self.jellyEffectView.frame.size.width - ALARM_MINUTES_SLIDER_SIZE)/2, 40, ALARM_MINUTES_SLIDER_SIZE, ALARM_MINUTES_SLIDER_SIZE)];
+        self.minutesSlider = [[SleepPainterAlarmSlider alloc] initWithFrame:CGRectMake((self.jellyEffectView.frame.size.width - ALARM_MINUTES_SLIDER_SIZE)/2, 70, ALARM_MINUTES_SLIDER_SIZE, ALARM_MINUTES_SLIDER_SIZE)];
         [self.jellyEffectView addSubview:self.minutesSlider];
         [self.minutesSlider addTarget:self action:@selector(newMinsValue) forControlEvents:UIControlEventValueChanged];
     }
     
     if (!self.hourSlider)
     {
-        self.hourSlider = [[SleepPainterAlarmSlider alloc] initWithFrame:CGRectMake((self.jellyEffectView.frame.size.width - ALARM_HOUR_SLIDER_SIZE)/2, 90, ALARM_HOUR_SLIDER_SIZE, ALARM_HOUR_SLIDER_SIZE)];
+        self.hourSlider = [[SleepPainterAlarmSlider alloc] initWithFrame:CGRectMake((self.jellyEffectView.frame.size.width - ALARM_HOUR_SLIDER_SIZE)/2, 120, ALARM_HOUR_SLIDER_SIZE, ALARM_HOUR_SLIDER_SIZE)];
         [self.jellyEffectView addSubview:self.hourSlider];
         [self.hourSlider addTarget:self action:@selector(newHourValue) forControlEvents:UIControlEventValueChanged];
     }
     
     if (!self.wakeUpLabel)
     {
-        self.wakeUpLabel = [[UILabel alloc] initWithFrame:CGRectMake((self.jellyEffectView.frame.size.width - 100)/2, 120, 85, 70)];
-        self.wakeUpLabel.center = self.hourSlider.center;
-        [self.wakeUpLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:23.]];
+        self.wakeUpLabel = [[UILabel alloc] initWithFrame:CGRectMake(ALARM_BUTTON_MARGIN,45,self.jellyEffectView.frame.size.width - 2*ALARM_BUTTON_MARGIN,30)];
+        [self.wakeUpLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:18.]];
+        self.wakeUpLabel.numberOfLines = 1;
         self.wakeUpLabel.textColor = [UIColor whiteColor];
         self.wakeUpLabel.textAlignment = NSTextAlignmentCenter;
         [self.jellyEffectView addSubview:self.wakeUpLabel];
     }
     
     UIButton * setAlarmButton = [UIButton new];
-    [setAlarmButton setFrame:CGRectMake(ALARM_BUTTON_MARGIN, ALARM_MINUTES_SLIDER_SIZE + ALARM_BUTTON_MARGIN*2, self.jellyEffectView.frame.size.width/2 - ALARM_BUTTON_MARGIN , ALARM_BUTTON_HEIGHT)];
+    [setAlarmButton setFrame:CGRectMake(ALARM_BUTTON_MARGIN, ALARM_MINUTES_SLIDER_SIZE + ALARM_BUTTON_MARGIN*4, self.jellyEffectView.frame.size.width/2 - ALARM_BUTTON_MARGIN , ALARM_BUTTON_HEIGHT)];
     [setAlarmButton setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.2]];
-    [setAlarmButton setTitle:@"Set Wake Time" forState:UIControlStateNormal];
+    [setAlarmButton setTitle:@"OK" forState:UIControlStateNormal];
     [setAlarmButton addTarget:self action:@selector(clickToSetAlarm) forControlEvents:UIControlEventTouchUpInside];
     
     [self.jellyEffectView addSubview:setAlarmButton];
     
     UIButton * cancelButton = [UIButton new];
-    [cancelButton setFrame:CGRectMake(self.jellyEffectView.frame.size.width/2+2 , ALARM_MINUTES_SLIDER_SIZE + ALARM_BUTTON_MARGIN*2, self.jellyEffectView.frame.size.width/2 - ALARM_BUTTON_MARGIN, ALARM_BUTTON_HEIGHT)];
+    [cancelButton setFrame:CGRectMake(self.jellyEffectView.frame.size.width/2+2 , ALARM_MINUTES_SLIDER_SIZE + ALARM_BUTTON_MARGIN*4, self.jellyEffectView.frame.size.width/2 - ALARM_BUTTON_MARGIN, ALARM_BUTTON_HEIGHT)];
     [cancelButton setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.2]];
     [cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
     [cancelButton addTarget:self action:@selector(clickToCancelAlarm) forControlEvents:UIControlEventTouchUpInside];
@@ -306,9 +335,6 @@
     CGRect centerRect = [[centerHelperPresentationLayer valueForKeyPath:@"frame"]CGRectValue];
     CGRect sideRect = [[sideHelperPresentationLayer valueForKeyPath:@"frame"]CGRectValue];
     
-//    NSLog(@"Center:%@",NSStringFromCGRect(centerRect));
-//    NSLog(@"Side:%@",NSStringFromCGRect(sideRect));
-    
     CGFloat newJellyViewTopConstraint      =  position.y - CGRectGetMaxY(self.view.frame);
     
     self.jellyViewTopConstrain.constant = newJellyViewTopConstraint;
@@ -322,13 +348,9 @@
 #pragma mark - alarm notificaion
 -(void)clickToSetAlarm
 {
-    // this date will be replace by alarm user set
-    NSDate *currentDate = [NSDate date];
-    NSDate *datePlusEightHours = [currentDate dateByAddingTimeInterval:8*60*60];
     
-    [self configureLocalNotificationWithData:datePlusEightHours];
-    [self presentMessage:[NSString stringWithFormat:@"Go Sleep zZZZ.. Wake me up at %@",currentDate]];
-    
+    [self configureLocalNotificationWithData:self.userWakeUpTime];
+    [self presentMessage:[NSString stringWithFormat:@"Alarm Set Succeed!🌙 \n%@",[self.wakeUpLabel.text capitalizedString]]];
     //start motion detect..
     [self startDetectMovement];
 }
@@ -336,7 +358,7 @@
 -(void)clickToCancelAlarm
 {
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
-    [self presentMessage:@"Keep awake"];
+    [self presentMessage:@"Alarm Canceled. Sleep Later"];
 }
 
 - (void)configureLocalNotificationWithData:(NSDate*)date
@@ -344,7 +366,7 @@
     UILocalNotification * localNotif = [[UILocalNotification alloc] init];
     localNotif.fireDate = date;
     
-    localNotif.alertBody = @"Look at what you've done during sleeping..";
+    localNotif.alertBody = @"☀️Time to wake up☀️\n Go to check your 🎨 last night";
     localNotif.soundName = UILocalNotificationDefaultSoundName;
     NSLog(@"notification fire date %@",date);
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
@@ -366,12 +388,14 @@
 {
     
     self.motionManager = [[CMMotionManager alloc] init];
-    self.motionManager.accelerometerUpdateInterval = 0.5;
-    self.motionManager.gyroUpdateInterval = 0.5;
+    self.motionManager.accelerometerUpdateInterval = 5;
+    self.motionManager.gyroUpdateInterval = 5;
     
+    NSMutableArray * accelerationArray = [NSMutableArray new];
+
     [self.motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue currentQueue]
                                              withHandler:^(CMAccelerometerData *accelerometerData, NSError *error) {
-                                                 [self outputAccelertionData:accelerometerData.acceleration];
+                                                 [self outputAccelertionData:accelerometerData.acceleration withArray:accelerationArray];
                                                  if(error){
                                                      
                                                      NSLog(@"%@", error);
@@ -385,7 +409,7 @@
 
 }
 
--(void)outputAccelertionData:(CMAcceleration)acceleration
+-(void)outputAccelertionData:(CMAcceleration)acceleration withArray:(NSMutableArray *)array
 {
     double currentMaxAccelX = 0;
     double currentMaxAccelY = 0;
@@ -396,24 +420,24 @@
     {
         currentMaxAccelX = acceleration.x;
     }
-    NSMutableArray * accelerationX = [NSMutableArray new];
-    [accelerationX addObject:[NSString stringWithFormat:@" %f",acceleration.x]];
     
     NSLog(@"Acceleration.y = %fg",acceleration.y);
     if(fabs(acceleration.y) > fabs(currentMaxAccelY))
     {
         currentMaxAccelY = acceleration.y;
     }
-    NSMutableArray * accelerationY = [NSMutableArray new];
-    [accelerationY addObject:[NSString stringWithFormat:@" %f",acceleration.y]];
     
     NSLog(@"Acceleration.z = %fg",acceleration.z);
     if(fabs(acceleration.y) > fabs(currentMaxAccelY))
     {
         currentMaxAccelZ = acceleration.z;
     }
-    NSMutableArray * accelerationZ = [NSMutableArray new];
-    [accelerationZ addObject:[NSString stringWithFormat:@" %f",acceleration.z]];
+    
+    double result;
+    result = acceleration.x*acceleration.x + acceleration.y*acceleration.y + acceleration.z*acceleration.z;
+    [array addObject:[NSNumber numberWithDouble:result ]];
+    
+    NSLog(@"result = %@",array);
 }
 
 
@@ -448,11 +472,7 @@
     }
     NSMutableArray * rotationZ = [NSMutableArray new];
     [rotationZ addObject:[NSString stringWithFormat:@" %f",rotation.z]];
-
-
 }
-
-
 
 
 @end

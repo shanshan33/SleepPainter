@@ -26,7 +26,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.49999999999999961" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I DREAM YOUR DREAM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ocq-Pl-tY4">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.49999999999999961" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I DREAM YOUR DREAM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ocq-Pl-tY4" userLabel="I DRAW YOUR DREAM">
                                 <rect key="frame" x="0.0" y="353" width="600" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0es-dM-c07"/>
@@ -175,17 +175,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yUR-D3-vbq">
-                                <rect key="frame" x="31" y="150" width="538" height="300"/>
-                                <color key="backgroundColor" red="0.98469396578320534" green="1" blue="0.9652040716779331" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="qpl-sY-SMC"/>
-                                </constraints>
+                                <rect key="frame" x="50" y="175" width="500" height="250"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="czo-Ci-EMa">
                                 <rect key="frame" x="225" y="50" width="150" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="OtC-bF-aJW"/>
-                                    <constraint firstAttribute="height" constant="100" id="gGk-WR-wRw"/>
+                                    <constraint firstAttribute="width" constant="150" id="pL6-43-77u"/>
+                                    <constraint firstAttribute="height" constant="100" id="txa-Cd-ulC"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="18"/>
                                 <state key="normal">
@@ -196,21 +193,8 @@
                                     <action selector="iDrawYourDream:" destination="5QR-PG-cTC" eventType="touchUpInside" id="4DI-lA-bfR"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" alpha="0.49999999999999961" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="in0-T5-Nuw">
-                                <rect key="frame" x="36" y="494" width="155" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="OfE-By-jQe"/>
-                                </constraints>
-                                <state key="normal" title="OTHER DREAMS">
-                                    <color key="titleColor" red="0.98469396580000002" green="1" blue="0.9652040717" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="backAction:" destination="5QR-PG-cTC" eventType="touchUpInside" id="iik-Xb-Wos"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4I-6D-7U9">
-                                <rect key="frame" x="397" y="494" width="176" height="50"/>
+                                <rect key="frame" x="310" y="500" width="259" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="dBc-LO-AFY"/>
                                 </constraints>
@@ -223,20 +207,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eki-nv-iGr">
-                                <rect key="frame" x="206" y="494" width="176" height="50"/>
+                                <rect key="frame" x="31" y="500" width="259" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Abh-JG-P8w"/>
                                     <constraint firstAttribute="height" constant="50" id="aMi-Q8-XdW"/>
                                 </constraints>
                                 <state key="normal" title="SAVE">
                                     <color key="titleColor" red="0.98469396580000002" green="1" blue="0.9652040717" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Abh-JG-P8w"/>
-                                    </mask>
-                                </variation>
                                 <connections>
                                     <action selector="saveMyPaint:" destination="5QR-PG-cTC" eventType="touchUpInside" id="87n-Gn-YFv"/>
                                 </connections>
@@ -244,32 +222,24 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="yUR-D3-vbq" firstAttribute="top" secondItem="czo-Ci-EMa" secondAttribute="bottom" id="53b-iy-2dY"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="x4I-6D-7U9" secondAttribute="trailing" constant="11" id="5U4-uc-tAI"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="yUR-D3-vbq" secondAttribute="trailing" constant="15" id="9fL-xo-mDB"/>
-                            <constraint firstAttribute="centerX" secondItem="Eki-nv-iGr" secondAttribute="centerX" constant="6" id="BSq-a9-Ryz"/>
-                            <constraint firstItem="Nue-mi-STg" firstAttribute="top" secondItem="yUR-D3-vbq" secondAttribute="bottom" constant="150" id="BkY-SB-f6w"/>
-                            <constraint firstItem="x4I-6D-7U9" firstAttribute="leading" secondItem="Eki-nv-iGr" secondAttribute="trailing" constant="15" id="DFz-69-mkv"/>
-                            <constraint firstAttribute="centerY" secondItem="yUR-D3-vbq" secondAttribute="centerY" id="ElK-OP-NZx"/>
-                            <constraint firstAttribute="centerX" secondItem="czo-Ci-EMa" secondAttribute="centerX" id="GZi-DW-QoN"/>
-                            <constraint firstItem="x4I-6D-7U9" firstAttribute="width" secondItem="Eki-nv-iGr" secondAttribute="width" id="MY6-Ez-hvu"/>
-                            <constraint firstItem="yUR-D3-vbq" firstAttribute="leading" secondItem="0tB-7c-osV" secondAttribute="leadingMargin" constant="15" id="PZP-Iz-Q6X"/>
-                            <constraint firstItem="yUR-D3-vbq" firstAttribute="centerX" secondItem="czo-Ci-EMa" secondAttribute="centerX" id="Tpx-RZ-StI"/>
-                            <constraint firstItem="yUR-D3-vbq" firstAttribute="top" secondItem="2cu-nv-JP1" secondAttribute="bottom" constant="130" id="bTz-XI-SFv"/>
-                            <constraint firstItem="x4I-6D-7U9" firstAttribute="top" secondItem="yUR-D3-vbq" secondAttribute="bottom" constant="44" id="dkV-r2-h1d"/>
-                            <constraint firstItem="Eki-nv-iGr" firstAttribute="baseline" secondItem="in0-T5-Nuw" secondAttribute="baseline" id="exJ-gr-TWU"/>
-                            <constraint firstItem="in0-T5-Nuw" firstAttribute="top" secondItem="yUR-D3-vbq" secondAttribute="bottom" constant="44" id="frT-Ho-Ze3"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="x4I-6D-7U9" secondAttribute="trailing" constant="11" id="qli-C9-xSR"/>
-                            <constraint firstItem="in0-T5-Nuw" firstAttribute="leading" secondItem="0tB-7c-osV" secondAttribute="leadingMargin" constant="20" id="xSa-m8-2Iq"/>
-                            <constraint firstItem="Eki-nv-iGr" firstAttribute="leading" secondItem="in0-T5-Nuw" secondAttribute="trailing" constant="15" id="zXz-b5-7Bf"/>
+                            <constraint firstItem="yUR-D3-vbq" firstAttribute="leading" secondItem="0tB-7c-osV" secondAttribute="leadingMargin" constant="34" id="1dH-9p-lI6"/>
+                            <constraint firstItem="czo-Ci-EMa" firstAttribute="top" secondItem="2cu-nv-JP1" secondAttribute="bottom" constant="30" id="1rY-r7-bRc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="x4I-6D-7U9" secondAttribute="trailing" constant="15" id="2BN-G0-HCj"/>
+                            <constraint firstAttribute="centerX" secondItem="yUR-D3-vbq" secondAttribute="centerX" id="4fE-YB-HAd"/>
+                            <constraint firstItem="Eki-nv-iGr" firstAttribute="leading" secondItem="0tB-7c-osV" secondAttribute="leadingMargin" constant="15" id="Dub-d5-lqI"/>
+                            <constraint firstItem="yUR-D3-vbq" firstAttribute="top" secondItem="czo-Ci-EMa" secondAttribute="bottom" constant="25" id="YQW-Gl-ZqC"/>
+                            <constraint firstItem="Eki-nv-iGr" firstAttribute="baseline" secondItem="x4I-6D-7U9" secondAttribute="baseline" id="b1A-aQ-hQA"/>
+                            <constraint firstItem="Eki-nv-iGr" firstAttribute="width" secondItem="x4I-6D-7U9" secondAttribute="width" id="gfq-eZ-T7h"/>
+                            <constraint firstItem="Nue-mi-STg" firstAttribute="top" secondItem="x4I-6D-7U9" secondAttribute="bottom" constant="50" id="n8R-yR-XXD"/>
+                            <constraint firstItem="x4I-6D-7U9" firstAttribute="leading" secondItem="Eki-nv-iGr" secondAttribute="trailing" constant="20" id="t7u-Kx-88d"/>
+                            <constraint firstAttribute="centerX" secondItem="czo-Ci-EMa" secondAttribute="centerX" id="uaN-ex-pWh"/>
+                            <constraint firstItem="Nue-mi-STg" firstAttribute="top" secondItem="yUR-D3-vbq" secondAttribute="bottom" constant="175" id="ucz-3R-KX4"/>
+                            <constraint firstAttribute="centerY" secondItem="yUR-D3-vbq" secondAttribute="centerY" id="vfv-cC-kHx"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0Tf-4s-Nib"/>
                     <connections>
                         <outlet property="Owl" destination="czo-Ci-EMa" id="xK5-bk-1za"/>
-                        <outlet property="backButton" destination="in0-T5-Nuw" id="ASl-3O-g79"/>
-                        <outlet property="paintViewHeight" destination="qpl-sY-SMC" id="yV7-QG-8pP"/>
-                        <outlet property="paintViewWidthMargin" destination="9fL-xo-mDB" id="YgT-iE-g3F"/>
                         <outlet property="paintingView" destination="yUR-D3-vbq" id="Vfu-G2-ven"/>
                         <outlet property="saveImageButton" destination="Eki-nv-iGr" id="yu3-SU-s2s"/>
                         <outlet property="shareWithEmailButton" destination="x4I-6D-7U9" id="1sY-6C-YhW"/>
@@ -287,6 +257,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XdX-cK-MXn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

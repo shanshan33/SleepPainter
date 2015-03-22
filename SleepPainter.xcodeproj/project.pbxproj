@@ -80,7 +80,6 @@
 		C10CCBA01A9D29610031F29E = {
 			isa = PBXGroup;
 			children = (
-				C1BC13EA1ABE2E83000D70E0 /* CoreMotion.framework */,
 				C10CCBAB1A9D29610031F29E /* SleepPainter */,
 				C10CCBC81A9D29610031F29E /* SleepPainterTests */,
 				C10CCBAA1A9D29610031F29E /* Products */,
@@ -115,6 +114,7 @@
 		C10CCBAC1A9D29610031F29E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C1BC13EA1ABE2E83000D70E0 /* CoreMotion.framework */,
 				C158F9AA1AB4A5D1001B6DF3 /* QuartzCore.framework */,
 				C10CCBAD1A9D29610031F29E /* Info.plist */,
 				C10CCBAE1A9D29610031F29E /* main.m */,
