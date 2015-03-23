@@ -10,4 +10,7 @@
 
 @interface PaintViewController : UIViewController
 
+@property (assign) NSInteger  sleepDuration;
+
+
 @end

@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SleepPainter/ViewController.m"
-            timestampString = "448749352.744581"
+            timestampString = "448844244.996775"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "437"
-            endingLineNumber = "437"
+            startingLineNumber = "454"
+            endingLineNumber = "454"
             landmarkName = "-outputAccelertionData:withArray:"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SleepPainter/ViewController.m"
-            timestampString = "448749224.925886"
+            timestampString = "448844244.996775"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "355"
-            endingLineNumber = "355"
+            startingLineNumber = "369"
+            endingLineNumber = "369"
             landmarkName = "-clickToSetAlarm"
             landmarkType = "5">
          </BreakpointContent>
@@ -89,13 +89,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SleepPainter/PaintViewController.m"
-            timestampString = "448755626.60148"
+            filePath = "SleepPainter/ViewController.m"
+            timestampString = "448844340.775776"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "-setupDrawingLayer"
+            startingLineNumber = "388"
+            endingLineNumber = "388"
+            landmarkName = "-configureLocalNotificationWithData:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

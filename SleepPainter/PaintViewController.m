@@ -15,7 +15,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *Owl;
 @property (weak, nonatomic) IBOutlet UIView *paintingView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *paintViewWidthMargin;
 @property (weak, nonatomic) IBOutlet UIButton *saveImageButton;
 @property (weak, nonatomic) IBOutlet UIButton *shareWithEmailButton;
 
@@ -24,6 +23,7 @@
 @property (nonatomic, weak) CAShapeLayer *pathLayer;
 
 @property (weak, nonatomic) IBOutlet UILabel *drawLabel;
+
 
 
 @end
@@ -47,6 +47,8 @@
     self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.drawLabel.text = @"I 🎨 YOUR DREAM.. CLICK ME TO SEE";
+    
+    NSLog(@"Check if here receive the sleep duration: %ld",(long)self.sleepDuration);
 }
 
 - (UIBezierPath *)myPath
@@ -89,12 +91,15 @@
     gradientLayer.startPoint = CGPointMake(0.0,0.0);
     gradientLayer.endPoint = CGPointMake(1.0, 1.0);
     [self.animationLayer addSublayer:gradientLayer];
-
+    
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
- //   shapeLayer.frame = self.animationLayer.bounds;
     
     shapeLayer.path = [[self myPath] CGPath];
-    shapeLayer.strokeColor = [UIColor redColor].CGColor;
+    shapeLayer.strokeColor = [UIColor whiteColor].CGColor;
+    shapeLayer.shadowColor = [UIColor grayColor].CGColor;
+    shapeLayer.shadowOffset = CGSizeMake(0.0f, 8.0f);
+    
+    shapeLayer.shadowOpacity = 0.5f;
     shapeLayer.fillColor = nil;
     shapeLayer.lineWidth = 20.0f;
     shapeLayer.lineJoin = kCALineJoinBevel;

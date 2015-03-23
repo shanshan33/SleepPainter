@@ -48,7 +48,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *drawYourDreamLabel;
 @property (weak, nonatomic) IBOutlet UIButton *goImagesPageButton;
-
+@property (assign) NSTimeInterval sleepDuration;
 
 //motions
 @property (strong, nonatomic) CMMotionManager *motionManager;
@@ -207,7 +207,7 @@
     
     self.hour = [NSString stringWithFormat:@"%@",[hourFormatter stringFromDate:wakeTime]];
 
-    NSString *dayDescription = @"TONIGHT";
+    NSString *dayDescription = @"TODAY";
     NSDateFormatter *dayFormat = [[NSDateFormatter alloc] init];
     [dayFormat setDateFormat:@"d"];
     if ([[dayFormat stringFromDate:[NSDate date]] intValue] != [[dayFormat stringFromDate:wakeTime] intValue])
@@ -242,7 +242,6 @@
     [clockFormat setDateFormat:@"HH"];
     
     self.min = [NSString stringWithFormat:@"%@",[minsFormatter stringFromDate:wakeTime]];
-    self.wakeUpLabel.text = [NSString stringWithFormat:@"WAKE ME UP AT %@ %@hr%@min",dayDescription,[clockFormat stringFromDate:[NSDate date]],self.min];
     
     double timeInterval;
     
@@ -255,7 +254,20 @@
         timeInterval = mins * 60;
     }
     self.userWakeUpTime = [[NSDate date] dateByAddingTimeInterval:timeInterval];
+    
+//    NSTimeInterval diff = [self.userWakeUpTime timeIntervalSinceDate:[NSDate date]];
+//    NSLog(@"sleeping time duration %f",diff);
     NSLog(@"wake up time at mins%@",self.userWakeUpTime);
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"goToPaintView"])
+    {
+        PaintViewController *destViewController = segue.destinationViewController;
+        
+        destViewController.sleepDuration = self.sleepDuration ? self.sleepDuration :7*60*60;
+    }
 }
 
 
@@ -353,6 +365,10 @@
     [self presentMessage:[NSString stringWithFormat:@"Alarm Set Succeed!🌙 \n%@",[self.wakeUpLabel.text capitalizedString]]];
     //start motion detect..
     [self startDetectMovement];
+    
+    self.sleepDuration = [self.userWakeUpTime timeIntervalSinceDate:[NSDate date]];
+//    self.sleepDuration = diff;
+    NSLog(@"sleeping time duration %f",self.sleepDuration);
 }
 
 -(void)clickToCancelAlarm
