@@ -13,19 +13,18 @@
 
 @interface PaintViewController ()
 
-@property (weak, nonatomic) IBOutlet UIButton *Owl;
-@property (weak, nonatomic) IBOutlet UIView *paintingView;
-@property (weak, nonatomic) IBOutlet UIButton *saveImageButton;
-@property (weak, nonatomic) IBOutlet UIButton *shareWithEmailButton;
+@property (weak, nonatomic) IBOutlet            UIButton *Owl;
+@property (weak, nonatomic) IBOutlet            UIView   *paintingView;
+@property (weak, nonatomic) IBOutlet            UIButton *saveImageButton;
+@property (weak, nonatomic) IBOutlet            UIButton *shareWithEmailButton;
 
-@property (nonatomic, retain) CALayer    *penLayer;
-@property (nonatomic, retain) CALayer    *animationLayer;
-@property (nonatomic, weak) CAShapeLayer *pathLayer;
-@property (nonatomic,strong) CAGradientLayer * gradientLayer;
+@property (nonatomic, retain)                 CALayer    *penLayer;
+@property (nonatomic, retain)                 CALayer    *animationLayer;
+@property (nonatomic, weak)                 CAShapeLayer *pathLayer;
+@property (nonatomic,strong)             CAGradientLayer *gradientLayer;
 
-@property (weak, nonatomic) IBOutlet UILabel *drawLabel;
-
-@property (nonatomic, strong)MFMailComposeViewController * mailController;
+@property (weak, nonatomic) IBOutlet             UILabel *drawLabel;
+@property (nonatomic, strong)MFMailComposeViewController *mailController;
 
 
 @end
@@ -43,15 +42,29 @@
     
     [self.paintingView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"paintView_background"]]];
     self.animationLayer = [CALayer layer];
-    
     self.animationLayer = self.paintingView.layer;
+    self.animationLayer.shadowRadius = 2.0;
+    
+    [self showPaintView];
     [self.view.layer addSublayer:self.animationLayer];
     self.navigationController.navigationBarHidden = NO;
     self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.drawLabel.text = @"I 🎨 YOUR DREAM.. CLICK ME TO SEE";
-    
     NSLog(@"Check if here receive the sleep duration: %ld",(long)self.sleepDuration);
+}
+
+-(void)showPaintView
+{
+    CATransition *animation = [CATransition animation];
+    [animation setDelegate:self];
+    [animation setDuration:0.5f];
+    [animation setTimingFunction:UIViewAnimationCurveEaseInOut];
+    [animation setType: kCATransitionMoveIn];
+    [animation setSubtype: kCATransitionFromRight];
+    
+    [self.animationLayer addAnimation:animation forKey:@"transitionViewAnimation"];
+
 }
 
 - (UIBezierPath *)myPath
@@ -62,7 +75,6 @@
     aPath.lineJoinStyle = kCGLineCapRound;
     // Set the starting point of the shape.
     [aPath moveToPoint:CGPointMake(15, 200)];
-    
     // Draw the lines
     
     for (int i = 0; i < 50; i++)
@@ -76,7 +88,6 @@
 {
     if (self.pathLayer != nil)
     {
-
         [self.penLayer removeFromSuperlayer];
         [self.pathLayer removeFromSuperlayer];
         [self.gradientLayer removeFromSuperlayer];
@@ -84,10 +95,8 @@
         self.penLayer = nil;
         self.gradientLayer = nil;
     }
-
     self.gradientLayer = [CAGradientLayer layer];
     self.gradientLayer.frame = self.paintingView.layer.bounds;
-    
     
     NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:@[(__bridge id)[UIColor redColor].CGColor,
                                                                     (__bridge id)[UIColor orangeColor].CGColor,
@@ -98,15 +107,16 @@
                                                                     (__bridge id)[UIColor purpleColor].CGColor]];
     //ramdon order of colors in array
     NSUInteger count = [mutableArray count];
-    if (count > 1) {
+    if (count > 1)
+    {
         for (NSUInteger i = count - 1; i > 0; --i)
         {
             [mutableArray exchangeObjectAtIndex:i withObjectAtIndex:arc4random_uniform((int32_t)(i + 1))];
         }
     }
-    
     NSArray *randomArray = [NSArray arrayWithArray:mutableArray];
     self.gradientLayer.colors = randomArray;
+    self.gradientLayer.opacity = 0.6f;
     self.gradientLayer.startPoint = CGPointMake(0.0,0.0);
     self.gradientLayer.endPoint = CGPointMake(1.0, 1.0);
     [self.animationLayer addSublayer:self.gradientLayer];
@@ -115,12 +125,13 @@
     
     shapeLayer.path = [[self myPath] CGPath];
     shapeLayer.strokeColor = [UIColor whiteColor].CGColor;
+    
     shapeLayer.shadowColor = [UIColor grayColor].CGColor;
     shapeLayer.shadowOffset = CGSizeMake(0.0f, 8.0f);
     shapeLayer.shadowRadius = 2.0f;
     shapeLayer.shadowOpacity = 1.0f;
-    shapeLayer.fillColor = nil;
-    shapeLayer.lineWidth = 25.0f;
+    shapeLayer.fillColor = [UIColor whiteColor].CGColor;
+    shapeLayer.lineWidth = 20.0f;
     shapeLayer.lineJoin = kCALineJoinBevel;
     [self.gradientLayer setMask:shapeLayer];
     self.pathLayer = shapeLayer;
@@ -162,7 +173,6 @@
 {
     [self setupDrawingLayer];
     [self startAnimation];
-
 }
 
 
@@ -171,9 +181,9 @@
     self.penLayer.hidden = YES;
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)backAction:(id)sender
@@ -189,6 +199,29 @@
 
 }
 
+#pragma mark share with email
+
+-(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(UIImage *)saveImage:(UIView *)view
+{
+    CGRect mainRect = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 80);
+    UIGraphicsBeginImageContext(mainRect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [[UIColor blackColor] set];
+    
+    CGContextFillRect(context, mainRect);
+    [view.layer renderInContext:context];
+    
+    UIImage * newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
 - (IBAction)shareWithEmail:(id)sender
 {
     self.mailController = [MFMailComposeViewController new];
@@ -202,8 +235,6 @@
     }
     
     UIImage * image = [self saveImage:self.view];
-    
-    
     for (UIView * view in [self.view subviews])
     {
         if ([view isKindOfClass:[UIToolbar class]]) {
@@ -219,17 +250,11 @@
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 }
 
-
--(UIImage *)saveImage:(UIView *)view
+//scaling an image for email
++(UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize
 {
-    CGRect mainRect = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 80);
-    UIGraphicsBeginImageContext(mainRect.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    [[UIColor blackColor] set];
-    
-    CGContextFillRect(context, mainRect);
-    [view.layer renderInContext:context];
-    
+    UIGraphicsBeginImageContext(newSize);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
     UIImage * newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     

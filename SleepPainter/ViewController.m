@@ -24,44 +24,42 @@
     int dummyToggle; // for background image change
 }
 
-@property (weak, nonatomic) IBOutlet UILabel *clockLabel;
-@property (weak, nonatomic) IBOutlet UIButton *homeSetAlarmButton;
-
+@property (weak, nonatomic) IBOutlet UILabel            *clockLabel;
+@property (weak, nonatomic) IBOutlet UIButton           *homeSetAlarmButton;
 // jelly effect view with alarm
-@property (strong, nonatomic) IBOutlet UIView *sideHelperView;
-@property (strong, nonatomic) IBOutlet UIView *centerHelperView;
-@property (weak, nonatomic) IBOutlet jellyEffectView *jellyEffectView;
+@property (strong, nonatomic) IBOutlet UIView           *sideHelperView;
+@property (strong, nonatomic) IBOutlet UIView           *centerHelperView;
+@property (weak, nonatomic) IBOutlet jellyEffectView    *jellyEffectView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *jellyViewTopConstrain;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *sideViewTopConstrain;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *centerViewTopConstrain;
-@property (nonatomic,strong) CADisplayLink *displayLink;
-@property  NSInteger animationCount; // 动画的数量
-
-//slider
-@property (strong,nonatomic)SleepPainterAlarmSlider * hourSlider;
-@property (strong,nonatomic)SleepPainterAlarmSlider * minutesSlider;
-@property (nonatomic) int alarmDuration;
-@property (nonatomic,strong) UILabel * wakeUpLabel;
-@property (nonatomic,strong) NSDate  * userWakeUpTime;
-@property (nonatomic,strong) NSString * hour;
-@property (nonatomic,strong) NSString * min;
-
-@property (weak, nonatomic) IBOutlet UILabel *drawYourDreamLabel;
-@property (weak, nonatomic) IBOutlet UIButton *goImagesPageButton;
+@property (nonatomic,strong) CADisplayLink              *displayLink;
+@property  NSInteger animationCount;
 @property (assign) NSTimeInterval sleepDuration;
 
+//slider
+@property (nonatomic) int alarmDuration;
+@property (strong,nonatomic)SleepPainterAlarmSlider     *hourSlider;
+@property (strong,nonatomic)SleepPainterAlarmSlider     *minutesSlider;
+@property (nonatomic,strong) UILabel                    *wakeUpLabel;
+@property (nonatomic,strong) NSDate                     *userWakeUpTime;
+@property (nonatomic,strong) NSString                   *hour;
+@property (nonatomic,strong) NSString                   *min;
+@property (weak, nonatomic) IBOutlet UILabel            *drawYourDreamLabel;
+@property (weak, nonatomic) IBOutlet UIButton           *goImagesPageButton;
+@property (nonatomic, strong) UIButton                  *setAlarmButton;
+@property (nonatomic ,strong) UIButton                  *cancelButton;
 //motions
-@property (strong, nonatomic) CMMotionManager *motionManager;
-
-
+@property (strong, nonatomic) CMMotionManager           *motionManager;
 @end
+
 
 @implementation ViewController
 
-
 -(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    if (self)
+    {
         self.animationCount = 0;
     }
     return self;
@@ -69,7 +67,8 @@
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
-    if (self) {
+    if (self)
+    {
         self.animationCount = 0;
     }
     return self;
@@ -99,10 +98,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    [self.navigationController setNavigationBarHidden:YES];   //it hides
+    [self.navigationController setNavigationBarHidden:YES];
 }
-
 
 #pragma mark - update clock and background image
 - (void)updateClock
@@ -145,8 +142,7 @@
     dummyToggle = 1 - dummyToggle;
 }
 
-#pragma mark - configure two owl buttons and jelly view
-
+#pragma mark - configure buttons and jelly view
 -(void)configOwlButton
 {
     [self.homeSetAlarmButton setTitle:@" ,___,\n(︶,︶)..zZ\n /)__ )\n   \"  \"" forState:UIControlStateNormal];
@@ -158,7 +154,6 @@
 }
 
 #pragma mark - actions
-
 - (IBAction)clickOwlToSetAlarm:(id)sender
 {
     self.goImagesPageButton.hidden = YES;
@@ -277,9 +272,7 @@
     }
 }
 
-
-#pragma mark - configure jelly view and animations
-
+#pragma mark - configure jelly view animations
 -(void)configureJellyView
 {
     if (!self.minutesSlider)
@@ -306,20 +299,28 @@
         [self.jellyEffectView addSubview:self.wakeUpLabel];
     }
     
-    UIButton * setAlarmButton = [UIButton new];
-    [setAlarmButton setFrame:CGRectMake(ALARM_BUTTON_MARGIN, ALARM_MINUTES_SLIDER_SIZE + ALARM_BUTTON_MARGIN*4, self.jellyEffectView.frame.size.width/2 - ALARM_BUTTON_MARGIN , ALARM_BUTTON_HEIGHT)];
-    [setAlarmButton setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.2]];
-    [setAlarmButton setTitle:@"OK" forState:UIControlStateNormal];
-    [setAlarmButton addTarget:self action:@selector(clickToSetAlarm) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.jellyEffectView addSubview:setAlarmButton];
-    
-    UIButton * cancelButton = [UIButton new];
-    [cancelButton setFrame:CGRectMake(self.jellyEffectView.frame.size.width/2+2 , ALARM_MINUTES_SLIDER_SIZE + ALARM_BUTTON_MARGIN*4, self.jellyEffectView.frame.size.width/2 - ALARM_BUTTON_MARGIN, ALARM_BUTTON_HEIGHT)];
-    [cancelButton setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.2]];
-    [cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
-    [cancelButton addTarget:self action:@selector(clickToCancelAlarm) forControlEvents:UIControlEventTouchUpInside];
-    [self.jellyEffectView addSubview:cancelButton];
+    if (!self.setAlarmButton) {
+        self.setAlarmButton = [UIButton new];
+        [self.setAlarmButton setFrame:CGRectMake(ALARM_BUTTON_MARGIN, ALARM_MINUTES_SLIDER_SIZE + ALARM_BUTTON_MARGIN*4, self.jellyEffectView.frame.size.width/2 - ALARM_BUTTON_MARGIN , ALARM_BUTTON_HEIGHT)];
+        [self.setAlarmButton setTintColor:[UIColor whiteColor]];
+        [self.setAlarmButton setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.2]];
+        [self.setAlarmButton setAlpha:0.5];
+        [self.setAlarmButton setTitle:@"OK" forState:UIControlStateNormal];
+        [self.setAlarmButton addTarget:self action:@selector(clickToSetAlarm) forControlEvents:UIControlEventTouchUpInside];
+        
+        [self.jellyEffectView addSubview:self.setAlarmButton];
+    }
+
+    if (!self.cancelButton) {
+        self.cancelButton = [UIButton new];
+        [self.cancelButton setFrame:CGRectMake(self.jellyEffectView.frame.size.width/2+2 , ALARM_MINUTES_SLIDER_SIZE + ALARM_BUTTON_MARGIN*4, self.jellyEffectView.frame.size.width/2 - ALARM_BUTTON_MARGIN, ALARM_BUTTON_HEIGHT)];
+        [self.cancelButton setTintColor:[UIColor colorWithWhite:1.0 alpha:0.5]];
+        [self.cancelButton setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.2]];
+        [self.cancelButton setAlpha:0.5];
+        [self.cancelButton setTitle:@"Cancel" forState:UIControlStateNormal];
+        [self.cancelButton addTarget:self action:@selector(clickToCancelAlarm) forControlEvents:UIControlEventTouchUpInside];
+        [self.jellyEffectView addSubview:self.cancelButton];
+    }
 }
 
 -(void)beforeAnimation
@@ -371,7 +372,6 @@
     [self presentMessage:[NSString stringWithFormat:@"Alarm Set Succeed!🌙 \n%@",[self.wakeUpLabel.text capitalizedString]]];
     //start motion detect..
     [self startDetectMovement];
-    
     self.sleepDuration = [self.userWakeUpTime timeIntervalSinceDate:[NSDate date]];
     NSLog(@"sleeping time duration %f",self.sleepDuration);
 }
@@ -386,7 +386,6 @@
 {
     UILocalNotification * localNotif = [[UILocalNotification alloc] init];
     localNotif.fireDate = date;
-    
     localNotif.alertBody = @"☀️Time to wake up☀️\n Go to check your 🎨 last night";
     localNotif.soundName = UILocalNotificationDefaultSoundName;
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
@@ -397,20 +396,16 @@
     UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Sleep Painter"
                                                      message:message delegate:nil
                                            cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    
     [alert show];
-    
 }
 
-#pragma mark -motion detect 
-
+#pragma mark -motion detect
 -(void)startDetectMovement
 {
     
     self.motionManager = [[CMMotionManager alloc] init];
     self.motionManager.accelerometerUpdateInterval = 5;
     self.motionManager.gyroUpdateInterval = 5;
-    
     NSMutableArray * accelerationArray = [NSMutableArray new];
     NSMutableArray * rotationArray     = [NSMutableArray new];
 
@@ -418,7 +413,6 @@
                                              withHandler:^(CMAccelerometerData *accelerometerData, NSError *error) {
                                                  [self outputAccelertionData:accelerometerData.acceleration withArray:accelerationArray];
                                                  if(error){
-                                                     
                                                      NSLog(@"%@", error);
                                                  }
                                              }];
@@ -427,7 +421,6 @@
                                     withHandler:^(CMGyroData *gyroData, NSError *error) {
                                         [self outputRotationData:gyroData.rotationRate withArray:rotationArray];
                                     }];
-
 }
 
 -(void)outputAccelertionData:(CMAcceleration)acceleration withArray:(NSMutableArray *)array
@@ -436,23 +429,9 @@
     double currentMaxAccelY = 0;
     double currentMaxAccelZ = 0;
     
-    NSLog(@"Acceleration.x = %fg",acceleration.x);
-    if(fabs(acceleration.x) > fabs(currentMaxAccelX))
-    {
-        currentMaxAccelX = acceleration.x;
-    }
-    
-    NSLog(@"Acceleration.y = %fg",acceleration.y);
-    if(fabs(acceleration.y) > fabs(currentMaxAccelY))
-    {
-        currentMaxAccelY = acceleration.y;
-    }
-    
-    NSLog(@"Acceleration.z = %fg",acceleration.z);
-    if(fabs(acceleration.y) > fabs(currentMaxAccelY))
-    {
-        currentMaxAccelZ = acceleration.z;
-    }
+    if(fabs(acceleration.x) > fabs(currentMaxAccelX)) currentMaxAccelX = acceleration.x;
+    if(fabs(acceleration.y) > fabs(currentMaxAccelY))  currentMaxAccelY = acceleration.y;
+    if(fabs(acceleration.y) > fabs(currentMaxAccelY)) currentMaxAccelZ = acceleration.z;
     
     double accelerationResult;
     accelerationResult = sqrt(acceleration.x*acceleration.x + acceleration.y*acceleration.y + acceleration.z*acceleration.z);  // x2+y2+z2 开方
@@ -468,30 +447,15 @@
     double currentMaxRotY   = 0;
     double currentMaxRotZ   = 0;
     
-    NSLog(@"Rotation.x = %fg",rotation.x);
-    if(fabs(rotation.x)> fabs(currentMaxRotX))
-    {
-        currentMaxRotX = rotation.x;
-    }
+    if(fabs(rotation.x)> fabs(currentMaxRotX)) currentMaxRotX = rotation.x;
+    if(fabs(rotation.y) > fabs(currentMaxRotY)) currentMaxRotY = rotation.y;
+    if(fabs(rotation.z) > fabs(currentMaxRotZ)) currentMaxRotZ = rotation.z;
     
-    NSLog(@"Rotation.y = %fg",rotation.y);
-    if(fabs(rotation.y) > fabs(currentMaxRotY))
-    {
-        currentMaxRotY = rotation.y;
-    }
-    
-    NSLog(@"Rotation.z = %fg",rotation.z);
-    if(fabs(rotation.z) > fabs(currentMaxRotZ))
-    {
-        currentMaxRotZ = rotation.z;
-    }
-
     double rotationResult;
     rotationResult = sqrt(rotation.x*rotation.x + rotation.y*rotation.y + rotation.z*rotation.z);  // x2+y2+z2 开方
     [rotationArray addObject:[NSNumber numberWithDouble:rotationResult]];
     
     NSLog(@"rotation result = %@",rotationArray);
-
 }
 
 
