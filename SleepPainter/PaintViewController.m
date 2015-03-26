@@ -21,9 +21,11 @@
 @property (nonatomic, retain) CALayer    *penLayer;
 @property (nonatomic, retain) CALayer    *animationLayer;
 @property (nonatomic, weak) CAShapeLayer *pathLayer;
+@property (nonatomic,strong) CAGradientLayer * gradientLayer;
 
 @property (weak, nonatomic) IBOutlet UILabel *drawLabel;
 
+@property (nonatomic, strong)MFMailComposeViewController * mailController;
 
 
 @end
@@ -32,13 +34,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"SP_background_5am.png"]]];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"SP_background_12am.png"]]];
     [self.Owl setTitle:@"        ,___,\n ★.*(⌒,⌒)‧:*‧°★*\n        /)__ )\n          \"  \"" forState:UIControlStateNormal];
     [self.Owl setTintColor:[UIColor whiteColor]];
     
     [self.saveImageButton setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.2]];
     [self.shareWithEmailButton setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.2]];
     
+    [self.paintingView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"paintView_background"]]];
     self.animationLayer = [CALayer layer];
     
     self.animationLayer = self.paintingView.layer;
@@ -58,14 +61,14 @@
     aPath.lineCapStyle = kCGLineCapRound;
     aPath.lineJoinStyle = kCGLineCapRound;
     // Set the starting point of the shape.
-    [aPath moveToPoint:CGPointMake(0, 100)];
+    [aPath moveToPoint:CGPointMake(15, 200)];
     
-    // Draw the lines for test
-    [aPath addLineToPoint:CGPointMake(100.0, 150)];
-    [aPath addLineToPoint:CGPointMake(110.0, 300)];
-    [aPath addLineToPoint:CGPointMake(200.0, 180)];
-    [aPath addLineToPoint:CGPointMake(250.0, 340)];
- 
+    // Draw the lines
+    
+    for (int i = 0; i < 50; i++)
+    {
+        [aPath addLineToPoint:CGPointMake(arc4random_uniform(330)+15, arc4random_uniform(250)+ 50)];
+    }
     return aPath;
 }
 
@@ -73,24 +76,40 @@
 {
     if (self.pathLayer != nil)
     {
+
         [self.penLayer removeFromSuperlayer];
         [self.pathLayer removeFromSuperlayer];
+        [self.gradientLayer removeFromSuperlayer];
         self.pathLayer = nil;
         self.penLayer = nil;
+        self.gradientLayer = nil;
     }
 
-    CAGradientLayer * gradientLayer = [CAGradientLayer layer];
-    gradientLayer.frame = self.paintingView.layer.bounds;
-    gradientLayer.colors = @[(__bridge id)[UIColor redColor].CGColor,
-                             (__bridge id)[UIColor orangeColor].CGColor,
-                             (__bridge id)[UIColor yellowColor].CGColor,
-                             (__bridge id)[UIColor greenColor].CGColor,
-                             (__bridge id)[UIColor blueColor].CGColor,
-                            (__bridge id)[UIColor purpleColor].CGColor];
-                                     
-    gradientLayer.startPoint = CGPointMake(0.0,0.0);
-    gradientLayer.endPoint = CGPointMake(1.0, 1.0);
-    [self.animationLayer addSublayer:gradientLayer];
+    self.gradientLayer = [CAGradientLayer layer];
+    self.gradientLayer.frame = self.paintingView.layer.bounds;
+    
+    
+    NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:@[(__bridge id)[UIColor redColor].CGColor,
+                                                                    (__bridge id)[UIColor orangeColor].CGColor,
+                                                                    (__bridge id)[UIColor yellowColor].CGColor,
+                                                                    (__bridge id)[UIColor greenColor].CGColor,
+                                                                    (__bridge id)[UIColor blueColor].CGColor,
+                                                                    (__bridge id)[UIColor brownColor].CGColor,
+                                                                    (__bridge id)[UIColor purpleColor].CGColor]];
+    //ramdon order of colors in array
+    NSUInteger count = [mutableArray count];
+    if (count > 1) {
+        for (NSUInteger i = count - 1; i > 0; --i)
+        {
+            [mutableArray exchangeObjectAtIndex:i withObjectAtIndex:arc4random_uniform((int32_t)(i + 1))];
+        }
+    }
+    
+    NSArray *randomArray = [NSArray arrayWithArray:mutableArray];
+    self.gradientLayer.colors = randomArray;
+    self.gradientLayer.startPoint = CGPointMake(0.0,0.0);
+    self.gradientLayer.endPoint = CGPointMake(1.0, 1.0);
+    [self.animationLayer addSublayer:self.gradientLayer];
     
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     
@@ -98,12 +117,12 @@
     shapeLayer.strokeColor = [UIColor whiteColor].CGColor;
     shapeLayer.shadowColor = [UIColor grayColor].CGColor;
     shapeLayer.shadowOffset = CGSizeMake(0.0f, 8.0f);
-    
-    shapeLayer.shadowOpacity = 0.5f;
+    shapeLayer.shadowRadius = 2.0f;
+    shapeLayer.shadowOpacity = 1.0f;
     shapeLayer.fillColor = nil;
-    shapeLayer.lineWidth = 20.0f;
+    shapeLayer.lineWidth = 25.0f;
     shapeLayer.lineJoin = kCALineJoinBevel;
-    [gradientLayer setMask:shapeLayer];
+    [self.gradientLayer setMask:shapeLayer];
     self.pathLayer = shapeLayer;
 
     UIImage *penImage = [UIImage imageNamed:@"pencil_icon.png"];
@@ -125,13 +144,13 @@
     self.penLayer.hidden = NO;
     
     CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-    pathAnimation.duration = 5.0;
+    pathAnimation.duration = 20.0;
     pathAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
     pathAnimation.toValue = [NSNumber numberWithFloat:1.0f];
     [self.pathLayer addAnimation:pathAnimation forKey:@"strokeEnd"];
     
     CAKeyframeAnimation *penAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-    penAnimation.duration = 5.0;
+    penAnimation.duration = 20.0;
     penAnimation.path = self.pathLayer.path;
     penAnimation.calculationMode = kCAAnimationPaced;
     penAnimation.delegate = self;
@@ -141,8 +160,8 @@
 
 - (IBAction)iDrawYourDream:(id)sender
 {
-        [self setupDrawingLayer];
-        [self startAnimation];
+    [self setupDrawingLayer];
+    [self startAnimation];
 
 }
 
@@ -172,13 +191,38 @@
 
 - (IBAction)shareWithEmail:(id)sender
 {
+    self.mailController = [MFMailComposeViewController new];
+    self.mailController.mailComposeDelegate = self;
     
+    for (UIView * view in [self.view subviews])
+    {
+        if ([view isKindOfClass:[UIToolbar class]]) {
+            view.hidden = YES;
+        }
+    }
+    
+    UIImage * image = [self saveImage:self.view];
+    
+    
+    for (UIView * view in [self.view subviews])
+    {
+        if ([view isKindOfClass:[UIToolbar class]]) {
+            view.hidden = NO;
+        }
+    }
+    
+    NSData * imageAsData = UIImagePNGRepresentation(image);
+    [self.mailController addAttachmentData:imageAsData mimeType:@"image/png" fileName:@"paintYourDream.png"];
+    [self.mailController setSubject:@"image From Sleep Painter"];
+    
+    [self presentViewController:self.mailController animated:YES completion:nil];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 }
 
 
 -(UIImage *)saveImage:(UIView *)view
 {
-    CGRect mainRect = [[UIScreen mainScreen] bounds];
+    CGRect mainRect = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 80);
     UIGraphicsBeginImageContext(mainRect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
     [[UIColor blackColor] set];

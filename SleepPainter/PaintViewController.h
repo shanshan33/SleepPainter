@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 
-@interface PaintViewController : UIViewController
+@interface PaintViewController : UIViewController<MFMailComposeViewControllerDelegate>
+
 
 @property (assign) NSInteger  sleepDuration;
 

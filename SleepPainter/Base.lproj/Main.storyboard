@@ -58,7 +58,7 @@
                                     <constraint firstAttribute="height" constant="50" id="VcP-MV-6Wc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="20"/>
-                                <state key="normal" title="SLEEPY ? CLICK ME ☟">
+                                <state key="normal" title="SLEEPY? CLICK ME TO SET ALARM">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
@@ -167,8 +167,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yUR-D3-vbq">
-                                <rect key="frame" x="50" y="186" width="500" height="283"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="31" y="180" width="538" height="314"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="czo-Ci-EMa">
                                 <rect key="frame" x="225" y="50" width="150" height="80"/>
@@ -186,11 +186,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4I-6D-7U9">
-                                <rect key="frame" x="310" y="500" width="259" height="50"/>
+                                <rect key="frame" x="310" y="520" width="259" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="dBc-LO-AFY"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="18"/>
                                 <state key="normal" title="SHARE">
                                     <color key="titleColor" red="0.98469396580000002" green="1" blue="0.9652040717" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -200,7 +200,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eki-nv-iGr">
-                                <rect key="frame" x="31" y="501" width="259" height="50"/>
+                                <rect key="frame" x="31" y="520" width="259" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="aMi-Q8-XdW"/>
                                 </constraints>
@@ -220,29 +220,29 @@
                                     <constraint firstAttribute="height" constant="37" id="XUH-U9-AkN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="yUR-D3-vbq" firstAttribute="leading" secondItem="0tB-7c-osV" secondAttribute="leadingMargin" constant="34" id="1dH-9p-lI6"/>
+                            <constraint firstItem="yUR-D3-vbq" firstAttribute="leading" secondItem="0tB-7c-osV" secondAttribute="leadingMargin" constant="15" id="1dH-9p-lI6"/>
                             <constraint firstItem="czo-Ci-EMa" firstAttribute="top" secondItem="2cu-nv-JP1" secondAttribute="bottom" constant="30" id="1rY-r7-bRc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="x4I-6D-7U9" secondAttribute="trailing" constant="15" id="2BN-G0-HCj"/>
                             <constraint firstAttribute="centerX" secondItem="yUR-D3-vbq" secondAttribute="centerX" id="4fE-YB-HAd"/>
-                            <constraint firstItem="yUR-D3-vbq" firstAttribute="top" secondItem="MKd-8I-usc" secondAttribute="bottom" constant="6" id="5Fk-mi-KSq"/>
-                            <constraint firstItem="x4I-6D-7U9" firstAttribute="top" secondItem="yUR-D3-vbq" secondAttribute="bottom" constant="31" id="C7D-Pl-2O7"/>
+                            <constraint firstItem="yUR-D3-vbq" firstAttribute="top" secondItem="MKd-8I-usc" secondAttribute="bottom" id="5Fk-mi-KSq"/>
+                            <constraint firstItem="x4I-6D-7U9" firstAttribute="top" secondItem="yUR-D3-vbq" secondAttribute="bottom" constant="26" id="C7D-Pl-2O7"/>
                             <constraint firstItem="Eki-nv-iGr" firstAttribute="leading" secondItem="0tB-7c-osV" secondAttribute="leadingMargin" constant="15" id="Dub-d5-lqI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yUR-D3-vbq" secondAttribute="trailing" constant="15" id="MRD-c1-rkv"/>
                             <constraint firstItem="MKd-8I-usc" firstAttribute="top" secondItem="czo-Ci-EMa" secondAttribute="bottom" constant="13" id="N2E-FT-U9f"/>
                             <constraint firstItem="MKd-8I-usc" firstAttribute="leading" secondItem="0tB-7c-osV" secondAttribute="leadingMargin" constant="15" id="VeY-EE-D51"/>
                             <constraint firstItem="Eki-nv-iGr" firstAttribute="baseline" secondItem="x4I-6D-7U9" secondAttribute="baseline" id="b1A-aQ-hQA"/>
                             <constraint firstAttribute="centerX" secondItem="MKd-8I-usc" secondAttribute="centerX" id="fyx-Ab-aQM"/>
                             <constraint firstItem="Eki-nv-iGr" firstAttribute="width" secondItem="x4I-6D-7U9" secondAttribute="width" id="gfq-eZ-T7h"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MKd-8I-usc" secondAttribute="trailing" constant="15" id="lbI-ev-26k"/>
-                            <constraint firstItem="Nue-mi-STg" firstAttribute="top" secondItem="x4I-6D-7U9" secondAttribute="bottom" constant="50" id="n8R-yR-XXD"/>
+                            <constraint firstItem="Nue-mi-STg" firstAttribute="top" secondItem="x4I-6D-7U9" secondAttribute="bottom" constant="30" id="n8R-yR-XXD"/>
                             <constraint firstItem="x4I-6D-7U9" firstAttribute="leading" secondItem="Eki-nv-iGr" secondAttribute="trailing" constant="20" id="t7u-Kx-88d"/>
                             <constraint firstAttribute="centerX" secondItem="czo-Ci-EMa" secondAttribute="centerX" id="uaN-ex-pWh"/>
-                            <constraint firstAttribute="centerY" secondItem="yUR-D3-vbq" secondAttribute="centerY" constant="-27.5" id="vfv-cC-kHx"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0Tf-4s-Nib"/>

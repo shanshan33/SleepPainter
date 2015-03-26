@@ -179,16 +179,17 @@
     //先处理旁边那个辅助方块的约束
     self.sideViewTopConstrain.constant = newTopMargin;
     [self beforeAnimation];
-    [UIView animateWithDuration:0.7 delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:0.9f options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionAllowUserInteraction animations:^{
+    [UIView animateWithDuration:1.0 delay:0.0f usingSpringWithDamping:0.6f initialSpringVelocity:0.9f options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionAllowUserInteraction animations:^{
         [self.sideHelperView layoutIfNeeded];
-    } completion:^(BOOL finished) {
+    } completion:^(BOOL finished)
+    {
         [self finishAnimation];
     }];
     
     //再处理中间那个辅助方块的约束
     self.centerViewTopConstrain.constant = newTopMargin;
     [self beforeAnimation];
-    [UIView animateWithDuration:0.7 delay:0.0f usingSpringWithDamping:0.7f initialSpringVelocity:2.0f options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionAllowUserInteraction animations:^{
+    [UIView animateWithDuration:1.0 delay:0.0f usingSpringWithDamping:0.7f initialSpringVelocity:2.0f options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionAllowUserInteraction animations:^{
         [self.centerHelperView layoutIfNeeded];
     } completion:^(BOOL finished) {
         [self finishAnimation];
@@ -216,12 +217,19 @@
     NSDateFormatter *clockFormat = [[NSDateFormatter alloc] init];
     [clockFormat setDateFormat:@"mm"];
     
-    self.wakeUpLabel.text = [NSString stringWithFormat:@"WAKE ME UP AT %@ %@hr%@min",dayDescription,self.hour,[clockFormat stringFromDate:[NSDate date]]];
-  
-    self.userWakeUpTime = [[NSDate date] dateByAddingTimeInterval:(hours+1) * 60 * 60];
-    NSLog(@"wake up time at hours%@",self.userWakeUpTime);
-
-
+    self.wakeUpLabel.text = [NSString stringWithFormat:@"WAKE ME UP AT %@ %@:%@",dayDescription,self.hour,(self.min)? self.min :[clockFormat stringFromDate:[NSDate date]]];
+    
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    
+    NSDateComponents *minComponents = [cal components:
+                                       NSCalendarUnitYear |NSCalendarUnitMonth| NSCalendarUnitDay   |
+                                       NSCalendarUnitHour |
+                                       NSCalendarUnitMinute fromDate:wakeTime];
+    [minComponents setMinute:(self.min)?[self.min intValue]:[[clockFormat stringFromDate:[NSDate date]] intValue]];
+    [minComponents setHour:[self.hour intValue]+1];
+    
+    self.userWakeUpTime = [cal dateFromComponents:minComponents];
+    NSLog(@"self.userwakeupTime hours：%@",self.userWakeUpTime);
 }
 
 -(void)newMinsValue
@@ -243,21 +251,20 @@
     
     self.min = [NSString stringWithFormat:@"%@",[minsFormatter stringFromDate:wakeTime]];
     
-    double timeInterval;
+    self.wakeUpLabel.text = [NSString stringWithFormat:@"WAKE ME UP AT %@ %@:%@",dayDescription,(self.hour)? self.hour:[clockFormat stringFromDate:[NSDate date]],self.min];
+  
+    NSCalendar *cal = [NSCalendar currentCalendar];
     
-    if (([self.min intValue] >= [[minsFormatter stringFromDate:[NSDate date] ] intValue]) && [self.min intValue] < 60)
-    {
-       timeInterval  = 60 *60 + mins*60;
-    }
-        else
-    {
-        timeInterval = mins * 60;
-    }
-    self.userWakeUpTime = [[NSDate date] dateByAddingTimeInterval:timeInterval];
+    NSDateComponents *minComponents = [cal components:
+                                       NSCalendarUnitYear |NSCalendarUnitMonth| NSCalendarUnitDay   |
+                                       NSCalendarUnitHour |
+                                       NSCalendarUnitMinute fromDate:wakeTime];
+    [minComponents setMinute:[self.min intValue]];
+    [minComponents setHour:(self.hour)?[self.hour intValue]+1: [[clockFormat stringFromDate:[NSDate date]] intValue]+1];
     
-//    NSTimeInterval diff = [self.userWakeUpTime timeIntervalSinceDate:[NSDate date]];
-//    NSLog(@"sleeping time duration %f",diff);
-    NSLog(@"wake up time at mins%@",self.userWakeUpTime);
+    self.userWakeUpTime = [cal dateFromComponents:minComponents];
+    NSLog(@"self.userwakeupTime min %@",self.userWakeUpTime);
+
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -325,7 +332,6 @@
     self.animationCount ++;
 }
 
-//动画完成之后调用
 -(void)finishAnimation
 {
     self.animationCount --;
@@ -336,7 +342,6 @@
     }
 }
 
-//实时刷新路径
 -(void)displayLinkAction:(CADisplayLink *)dis
 {
     CALayer *sideHelperPresentationLayer   =  (CALayer *)[self.sideHelperView.layer presentationLayer];
@@ -360,14 +365,14 @@
 #pragma mark - alarm notificaion
 -(void)clickToSetAlarm
 {
-    
     [self configureLocalNotificationWithData:self.userWakeUpTime];
+    NSLog(@"notification fire date %@",self.userWakeUpTime);
+
     [self presentMessage:[NSString stringWithFormat:@"Alarm Set Succeed!🌙 \n%@",[self.wakeUpLabel.text capitalizedString]]];
     //start motion detect..
     [self startDetectMovement];
     
     self.sleepDuration = [self.userWakeUpTime timeIntervalSinceDate:[NSDate date]];
-//    self.sleepDuration = diff;
     NSLog(@"sleeping time duration %f",self.sleepDuration);
 }
 
@@ -384,7 +389,6 @@
     
     localNotif.alertBody = @"☀️Time to wake up☀️\n Go to check your 🎨 last night";
     localNotif.soundName = UILocalNotificationDefaultSoundName;
-    NSLog(@"notification fire date %@",date);
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
 }
 
@@ -408,6 +412,7 @@
     self.motionManager.gyroUpdateInterval = 5;
     
     NSMutableArray * accelerationArray = [NSMutableArray new];
+    NSMutableArray * rotationArray     = [NSMutableArray new];
 
     [self.motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue currentQueue]
                                              withHandler:^(CMAccelerometerData *accelerometerData, NSError *error) {
@@ -420,7 +425,7 @@
     
     [self.motionManager startGyroUpdatesToQueue:[NSOperationQueue currentQueue]
                                     withHandler:^(CMGyroData *gyroData, NSError *error) {
-                                        [self outputRotationData:gyroData.rotationRate];
+                                        [self outputRotationData:gyroData.rotationRate withArray:rotationArray];
                                     }];
 
 }
@@ -449,28 +454,25 @@
         currentMaxAccelZ = acceleration.z;
     }
     
-    double result;
-    result = acceleration.x*acceleration.x + acceleration.y*acceleration.y + acceleration.z*acceleration.z;
-    [array addObject:[NSNumber numberWithDouble:result ]];
+    double accelerationResult;
+    accelerationResult = sqrt(acceleration.x*acceleration.x + acceleration.y*acceleration.y + acceleration.z*acceleration.z);  // x2+y2+z2 开方
+    [array addObject:[NSNumber numberWithDouble:accelerationResult]];
     
-    NSLog(@"result = %@",array);
+    NSLog(@"acceleration result = %@",array);
 }
 
 
--(void)outputRotationData:(CMRotationRate)rotation
+-(void)outputRotationData:(CMRotationRate)rotation withArray:(NSMutableArray *)rotationArray
 {
     double currentMaxRotX   = 0;
     double currentMaxRotY   = 0;
     double currentMaxRotZ   = 0;
-    
     
     NSLog(@"Rotation.x = %fg",rotation.x);
     if(fabs(rotation.x)> fabs(currentMaxRotX))
     {
         currentMaxRotX = rotation.x;
     }
-    NSMutableArray * rotationX = [NSMutableArray new];
-    [rotationX addObject:[NSString stringWithFormat:@"%f",rotation.x]];
     
     NSLog(@"Rotation.y = %fg",rotation.y);
     if(fabs(rotation.y) > fabs(currentMaxRotY))
@@ -478,16 +480,18 @@
         currentMaxRotY = rotation.y;
     }
     
-    NSMutableArray * rotationY = [NSMutableArray new];
-    [rotationY addObject:[NSString stringWithFormat:@"%f",rotation.y]];
-    
     NSLog(@"Rotation.z = %fg",rotation.z);
     if(fabs(rotation.z) > fabs(currentMaxRotZ))
     {
         currentMaxRotZ = rotation.z;
     }
-    NSMutableArray * rotationZ = [NSMutableArray new];
-    [rotationZ addObject:[NSString stringWithFormat:@" %f",rotation.z]];
+
+    double rotationResult;
+    rotationResult = sqrt(rotation.x*rotation.x + rotation.y*rotation.y + rotation.z*rotation.z);  // x2+y2+z2 开方
+    [rotationArray addObject:[NSNumber numberWithDouble:rotationResult]];
+    
+    NSLog(@"rotation result = %@",rotationArray);
+
 }
 
 
