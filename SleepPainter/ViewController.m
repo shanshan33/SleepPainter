@@ -14,8 +14,8 @@
 
 
 #define CHANGE_SKY_INTERVAL              10
-#define ALARM_HOUR_SLIDER_SIZE           140
-#define ALARM_MINUTES_SLIDER_SIZE        240
+#define ALARM_HOUR_SLIDER_SIZE           130
+#define ALARM_MINUTES_SLIDER_SIZE        230
 #define ALARM_BUTTON_MARGIN              20
 #define ALARM_BUTTON_HEIGHT              50
 
@@ -33,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *jellyViewTopConstrain;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *sideViewTopConstrain;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *centerViewTopConstrain;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *jellyViewHeightConstrain;
 @property (nonatomic,strong) CADisplayLink              *displayLink;
 @property  NSInteger animationCount;
 @property (assign) NSTimeInterval sleepDuration;
@@ -87,6 +88,15 @@
     self.sideViewTopConstrain.constant   = 0;
     self.centerViewTopConstrain.constant = 0;
     self.jellyViewTopConstrain.constant  = 0;
+    
+    if ([[UIScreen mainScreen] bounds].size.height == 568)
+    {
+        self.jellyViewHeightConstrain.constant = 300;
+    }
+    if ([[UIScreen mainScreen] bounds].size.height == 736)
+    {
+        self.jellyViewHeightConstrain.constant = 450;
+    }
     
     self.sideHelperView.hidden   = YES;
     self.centerHelperView.hidden = YES;
@@ -277,14 +287,14 @@
 {
     if (!self.minutesSlider)
     {
-        self.minutesSlider = [[SleepPainterAlarmSlider alloc] initWithFrame:CGRectMake((self.jellyEffectView.frame.size.width - ALARM_MINUTES_SLIDER_SIZE)/2, 70, ALARM_MINUTES_SLIDER_SIZE, ALARM_MINUTES_SLIDER_SIZE)];
+        self.minutesSlider = [[SleepPainterAlarmSlider alloc] initWithFrame:CGRectMake((self.jellyEffectView.frame.size.width - ALARM_MINUTES_SLIDER_SIZE)/2, ([[UIScreen mainScreen] bounds].size.height == 568)?20:70, ALARM_MINUTES_SLIDER_SIZE, ALARM_MINUTES_SLIDER_SIZE)];
         [self.jellyEffectView addSubview:self.minutesSlider];
         [self.minutesSlider addTarget:self action:@selector(newMinsValue) forControlEvents:UIControlEventValueChanged];
     }
     
     if (!self.hourSlider)
     {
-        self.hourSlider = [[SleepPainterAlarmSlider alloc] initWithFrame:CGRectMake((self.jellyEffectView.frame.size.width - ALARM_HOUR_SLIDER_SIZE)/2, 120, ALARM_HOUR_SLIDER_SIZE, ALARM_HOUR_SLIDER_SIZE)];
+        self.hourSlider = [[SleepPainterAlarmSlider alloc] initWithFrame:CGRectMake((self.jellyEffectView.frame.size.width - ALARM_HOUR_SLIDER_SIZE)/2, ([[UIScreen mainScreen] bounds].size.height == 568)? 70: 120, ALARM_HOUR_SLIDER_SIZE, ALARM_HOUR_SLIDER_SIZE)];
         [self.jellyEffectView addSubview:self.hourSlider];
         [self.hourSlider addTarget:self action:@selector(newHourValue) forControlEvents:UIControlEventValueChanged];
     }
@@ -301,7 +311,7 @@
     
     if (!self.setAlarmButton) {
         self.setAlarmButton = [UIButton new];
-        [self.setAlarmButton setFrame:CGRectMake(ALARM_BUTTON_MARGIN, ALARM_MINUTES_SLIDER_SIZE + ALARM_BUTTON_MARGIN*4, self.jellyEffectView.frame.size.width/2 - ALARM_BUTTON_MARGIN , ALARM_BUTTON_HEIGHT)];
+        [self.setAlarmButton setFrame:CGRectMake(ALARM_BUTTON_MARGIN,([[UIScreen mainScreen] bounds].size.height == 568)? ALARM_MINUTES_SLIDER_SIZE : ALARM_MINUTES_SLIDER_SIZE + ALARM_BUTTON_MARGIN*4, self.jellyEffectView.frame.size.width/2 - ALARM_BUTTON_MARGIN , ALARM_BUTTON_HEIGHT)];
         [self.setAlarmButton setTintColor:[UIColor whiteColor]];
         [self.setAlarmButton setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.2]];
         [self.setAlarmButton setAlpha:0.5];
@@ -313,7 +323,7 @@
 
     if (!self.cancelButton) {
         self.cancelButton = [UIButton new];
-        [self.cancelButton setFrame:CGRectMake(self.jellyEffectView.frame.size.width/2+2 , ALARM_MINUTES_SLIDER_SIZE + ALARM_BUTTON_MARGIN*4, self.jellyEffectView.frame.size.width/2 - ALARM_BUTTON_MARGIN, ALARM_BUTTON_HEIGHT)];
+        [self.cancelButton setFrame:CGRectMake(self.jellyEffectView.frame.size.width/2+2 , ([[UIScreen mainScreen] bounds].size.height == 568)? ALARM_MINUTES_SLIDER_SIZE: ALARM_MINUTES_SLIDER_SIZE + ALARM_BUTTON_MARGIN*4, self.jellyEffectView.frame.size.width/2 - ALARM_BUTTON_MARGIN, ALARM_BUTTON_HEIGHT)];
         [self.cancelButton setTintColor:[UIColor colorWithWhite:1.0 alpha:0.5]];
         [self.cancelButton setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.2]];
         [self.cancelButton setAlpha:0.5];
@@ -384,10 +394,17 @@
 
 - (void)configureLocalNotificationWithData:(NSDate*)date
 {
-    UILocalNotification * localNotif = [[UILocalNotification alloc] init];
+    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+    if (localNotif == nil) return;
     localNotif.fireDate = date;
-    localNotif.alertBody = @"☀️Time to wake up☀️\n Go to check your 🎨 last night";
+    localNotif.timeZone = [NSTimeZone systemTimeZone];
+    
+    localNotif.alertBody = @"☀️Time to wake up☀️\n View your 🎨 last night";
+    localNotif.alertTitle = @"Sleep Painter";
+    
     localNotif.soundName = UILocalNotificationDefaultSoundName;
+    localNotif.applicationIconBadgeNumber = 1;
+    
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
 }
 

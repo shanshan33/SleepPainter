@@ -33,14 +33,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"SP_background_12am.png"]]];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"SP_background_3am.png"]]];
     [self.Owl setTitle:@"        ,___,\n ★.*(⌒,⌒)‧:*‧°★*\n        /)__ )\n          \"  \"" forState:UIControlStateNormal];
     [self.Owl setTintColor:[UIColor whiteColor]];
     
     [self.saveImageButton setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.2]];
     [self.shareWithEmailButton setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.2]];
     
-    [self.paintingView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"paintView_background"]]];
+    [self.paintingView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"paint_view2"]]];
     self.animationLayer = [CALayer layer];
     self.animationLayer = self.paintingView.layer;
     self.animationLayer.shadowRadius = 2.0;
@@ -77,9 +77,9 @@
     [aPath moveToPoint:CGPointMake(15, 200)];
     // Draw the lines
     
-    for (int i = 0; i < 50; i++)
+    for (int i = 0; i < 30; i++)
     {
-        [aPath addLineToPoint:CGPointMake(arc4random_uniform(330)+15, arc4random_uniform(250)+ 50)];
+        [aPath addLineToPoint:CGPointMake(arc4random_uniform(310)+15, arc4random_uniform(250)+ 50)];
     }
     return aPath;
 }
@@ -116,7 +116,7 @@
     }
     NSArray *randomArray = [NSArray arrayWithArray:mutableArray];
     self.gradientLayer.colors = randomArray;
-    self.gradientLayer.opacity = 0.6f;
+    self.gradientLayer.opacity = 0.8f;
     self.gradientLayer.startPoint = CGPointMake(0.0,0.0);
     self.gradientLayer.endPoint = CGPointMake(1.0, 1.0);
     [self.animationLayer addSublayer:self.gradientLayer];
@@ -130,7 +130,7 @@
     shapeLayer.shadowOffset = CGSizeMake(0.0f, 8.0f);
     shapeLayer.shadowRadius = 2.0f;
     shapeLayer.shadowOpacity = 1.0f;
-    shapeLayer.fillColor = [UIColor whiteColor].CGColor;
+//    shapeLayer.fillColor = [UIColor whiteColor].CGColor;
     shapeLayer.lineWidth = 20.0f;
     shapeLayer.lineJoin = kCALineJoinBevel;
     [self.gradientLayer setMask:shapeLayer];
@@ -142,7 +142,6 @@
     penLayer.anchorPoint = CGPointZero;
     penLayer.frame = CGRectMake(0.0f, 0.0f, penImage.size.width/2, penImage.size.height/2);
     [self.animationLayer addSublayer:penLayer];
-    
     self.penLayer = penLayer;
     
 }
@@ -151,7 +150,7 @@
 {
     [self.pathLayer removeAllAnimations];
     [self.penLayer removeAllAnimations];
-
+    [self.animationLayer removeAllAnimations];
     self.penLayer.hidden = NO;
     
     CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
@@ -176,7 +175,7 @@
 }
 
 
-- (void) animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
     self.penLayer.hidden = YES;
 }

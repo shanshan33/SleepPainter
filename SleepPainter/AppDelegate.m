@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import "PaintViewController.h"
 
 
 @interface AppDelegate ()
@@ -24,6 +25,14 @@
         [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
     }
     
+    UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    PaintViewController * paintViewController = [PaintViewController new];
+    
+    if (localNotif) {
+        application.applicationIconBadgeNumber = localNotif.applicationIconBadgeNumber-1;
+    }
+    [self.window addSubview:paintViewController.view];
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

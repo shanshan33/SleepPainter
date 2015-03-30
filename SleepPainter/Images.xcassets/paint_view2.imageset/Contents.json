@@ -7,12 +7,11 @@
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "SP_background_5am@2x.png"
+      "filename" : "画布2.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "SP_background_5am@3x.png"
+      "scale" : "3x"
     }
   ],
   "info" : {
